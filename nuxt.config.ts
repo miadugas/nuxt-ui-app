@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  css: [
+    '@/assets/css/tailwind.css', // Custom Tailwind file
+  ],
   devtools: { enabled: true },
   modules: ['@nuxtjs/sanity', '@nuxt/ui'],
   sanity: {

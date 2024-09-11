@@ -1,0 +1,13 @@
+/* assets/css/tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles (optional) */
+.my-custom-style {
+  @apply text-cyan-500; /* Example of custom style */
+}
+
+
+
+
