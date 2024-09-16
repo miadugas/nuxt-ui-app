@@ -3,9 +3,103 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles (optional) */
-.my-custom-style {
-  @apply text-cyan-500; /* Example of custom style */
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+.portfolio-item {
+  @apply relative flex cursor-pointer flex-col gap-1 rounded-lg border p-6 shadow-2xl backdrop-blur-sm transition-all duration-300;
+  @apply border-gray-200 bg-white/80 dark:border-white/10 dark:bg-zinc-900/80;
+  @apply shadow-gray-200/50 dark:shadow-zinc-950/50;
+  min-height: 480px;
+  aspect-ratio: 16 / 9;
+}
+
+.portfolio-item:hover {
+  @apply border-gray-300 bg-gray-50 dark:border-white/20 dark:bg-zinc-800/90;
+  transform: translateY(-5px);
+}
+
+.portfolio-item-image-container {
+  @apply flex-grow flex justify-center items-center overflow-hidden rounded-lg mb-4;
+  height: 60%;
+}
+
+.portfolio-item-image {
+  @apply w-full h-full object-cover transition-transform duration-300 ease-in-out;
+}
+
+.portfolio-item:hover .portfolio-item-image {
+  @apply scale-105;
+}
+
+.portfolio-item-footer {
+  @apply mt-auto;
+  height: 40%;
+}
+
+.portfolio-item-title {
+  @apply text-sm font-semibold transition-colors duration-300;
+  @apply text-gray-800 dark:text-white/90;
+}
+
+.portfolio-item:hover .portfolio-item-title {
+  @apply text-black dark:text-white;
+}
+
+.portfolio-item-date {
+  @apply text-xs transition-colors duration-300;
+  @apply text-gray-500 dark:text-neutral-500;
+}
+
+.portfolio-item:hover .portfolio-item-date {
+  @apply text-gray-700 dark:text-neutral-400;
+}
+
+.portfolio-item-arrow {
+  @apply flex items-center justify-center rounded-full border border-transparent p-1 shadow-md backdrop-blur-md transition-all duration-500;
+  @apply text-gray-600 dark:text-neutral-400;
+}
+
+.portfolio-item:hover .portfolio-item-arrow {
+  @apply border-gray-300 dark:border-white/10 -rotate-45;
+}
+
+.status-dot {
+  @apply w-2 h-2 rounded-full transition-all duration-300;
+}
+
+.status-dot-red {
+  @apply bg-gray-200 dark:bg-white/10 group-hover:bg-red-500/90;
+}
+
+.status-dot-yellow {
+  @apply bg-gray-200 dark:bg-white/10 group-hover:bg-yellow-500/90;
+}
+
+.status-dot-green {
+  @apply bg-gray-200 dark:bg-white/10 group-hover:bg-green-500/90;
+}
+
+.portfolio-item-stack {
+  @apply mt-2 rounded-lg border border-gray-200 dark:border-white/10 px-6 py-3 shadow-md backdrop-blur-md w-full;
+  @apply bg-white/80 dark:bg-zinc-900/80;
+}
+
+.portfolio-item-stack-title {
+  @apply text-sm font-semibold mb-2;
+  @apply text-gray-800 dark:text-white/90;
+}
+
+.portfolio-item-categories {
+  @apply flex flex-wrap gap-2;
+}
+
+.portfolio-item-category {
+  @apply text-xs px-2 py-1 rounded-full;
+  @apply bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200;
 }
 
 

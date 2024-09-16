@@ -20,17 +20,25 @@
             :aria-label="item.name + ' navigation link'"
             :class="[
               item.to === $route.path
-                ? 'border border-white/5 bg-neutral-900/10 text-white/75 shadow-2xl shadow-white/50 backdrop-blur-3xl text-shadow-sm'
-                : 'text-muted',
-              $colorMode.preference === 'dark'
-                ? 'dark:bg-neutral-800/10 dark:text-white/75'
-                : 'light:text-black'
+                ? $colorMode.preference === 'dark'
+                  ? 'border border-neutral-700 bg-neutral-900/20 text-cyan-500 shadow-lg backdrop-blur-lg'
+                  : 'border border-neutral-300 bg-neutral-100/60 text-cyan-500 shadow-lg backdrop-blur-lg'
+                : $colorMode.preference === 'dark'
+                  ? 'text-neutral-400 hover:text-neutral-200'
+                  : 'text-neutral-700 hover:text-neutral-900'
             ]"
             :to="item.to"
-            class="flex items-center rounded-full border border-transparent px-4 py-1 transition-all duration-300 ease-in-out hover:border-white/5 hover:bg-neutral-900/50 hover:text-main hover:backdrop-blur-3xl sm:px-6"
+            class="flex items-center rounded-full border border-transparent px-4 py-1 transition-all duration-300 ease-in-out hover:border-cyan-500 hover:bg-neutral-800/10 hover:backdrop-blur-xl sm:px-6"
           >
             <UIcon
               :name="item.icon"
+              :class="[
+                item.to === $route.path
+                  ? 'text-cyan-500'
+                  : $colorMode.preference === 'dark'
+                    ? 'text-neutral-500'
+                    : 'text-neutral-700'
+              ]"
               class="size-7 font-light sm:size-6"
             />
           </NuxtLink>
@@ -55,7 +63,3 @@ defineProps({
 
 const navigation = getNavigation('home') as Record<string, Navigation>
 </script>
-
-<style scoped>
-/* Optional: Add transitions or hover styles to enhance the interaction */
-</style>

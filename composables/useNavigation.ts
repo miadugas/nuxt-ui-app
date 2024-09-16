@@ -20,9 +20,9 @@ export function getNavigation(where: Where): Record<string, Navigation> | [] {
           to: '/works',
           icon: 'lucide:briefcase',
         },
-        writing: {
-          name: 'Writing',
-          to: '/writing',
+        writings: {
+          name: 'Writings',
+          to: '/writings',
           icon: 'lucide:library',
         },
         about: {
@@ -34,6 +34,11 @@ export function getNavigation(where: Where): Record<string, Navigation> | [] {
           name: 'Contact',
           to: '/contact',
           icon: 'lucide:mail',
+        },
+        login: {
+          name: 'Login',
+          to: '/login',
+          icon: 'lucide:lock-keyhole',
         },
       }
     default:

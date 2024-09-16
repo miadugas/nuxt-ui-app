@@ -1,5 +1,6 @@
 import { useSanity } from '#imports'
 import type { QueryParams, SanityClient } from '@sanity/client'
+import imageUrlBuilder from '@sanity/image-url'
 
 export const useSanityHelper = () => {
   const { client } = useSanity()
@@ -13,7 +14,7 @@ export const useSanityHelper = () => {
         throw new Error('Sanity client is not initialized')
       }
       const sanityClient = client as SanityClient
-      const result = await sanityClient.fetch<T>(query, params)
+      const result = await sanityClient.fetch<T>(query, params || {})
       return result
     } catch (error) {
       console.error('Error fetching data from Sanity:', error)
@@ -21,8 +22,17 @@ export const useSanityHelper = () => {
     }
   }
 
+  // Initialize the image URL builder using the Sanity client
+  const urlFor = (source: any) => {
+    if (!client) {
+      throw new Error('Sanity client is not initialized')
+    }
+    const builder = imageUrlBuilder(client as SanityClient)
+    return builder.image(source)
+  }
+
   return {
-    fetchData
+    fetchData,
+    urlFor // Expose urlFor function for generating image URLs
   }
 }
-
