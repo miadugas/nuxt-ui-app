@@ -1,6 +1,6 @@
 <template>
   <div class="relative isolate overflow-hidden">
-    <div class="mx-auto max-w-7xl px-6 pb-14 pt-10 sm:pb-12 lg:flex lg:px-8 lg:padding-top: 2.5rem">
+    <div class="mx-auto max-w-7xl px-6 pb-14 pt-10 sm:pb-12 lg:flex lg:padding-top: 2.5rem">
       <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8 text-center">
         <h1 class="mt-2 text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-6xl">
           Nice to meet you!

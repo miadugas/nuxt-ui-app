@@ -102,6 +102,9 @@
   @apply bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200;
 }
 
+.portfolio-item-body {
+  @apply text-xs text-gray-600 dark:text-neutral-400;
+}
 
 
 

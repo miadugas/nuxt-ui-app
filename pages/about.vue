@@ -1,31 +1,38 @@
 <template>
   <div class="flex w-full flex-col gap-4">
-    <section class="mx-auto mt-4 flex max-w-7xl flex-col py-10">
-      <h1 class="text-neutral-900 dark:text-neutral-50 text-center text-4xl mb-2">About Me
-      </h1>
+    <section class="mx-auto mt-4 flex flex-col py-10">
+      <h1 class="text-neutral-900 dark:text-neutral-50 text-center text-4xl mb-2">About Me</h1>
       <h2 class="text-center text-lg font-extralight
       italic text-muted text-neutral-600 dark:text-neutral-400 sm:text-medium mb-14">
         A few words about me.
       </h2>
+      <div class="relative isolate bg-transparent dark:bg-transparent">
+        <!-- Light Mode SVG -->
+        <svg
+          class="pulse-svg absolute inset-0 -z-10 h-full w-full stroke-neutral-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)] dark:hidden"
+          aria-hidden="true">
+          <defs>
+            <pattern id="0787a7c5-978c-4f66-83c7-11c213f99cb7" width="200" height="200" x="50%" y="-1"
+              patternUnits="userSpaceOnUse">
+              <path d="M.5 200V.5H200" fill="none" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" stroke-width="0" fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)" />
+        </svg>
 
-      <!-- Apply bg-opacity-50 here instead of opacity-50 -->
-      <div class="flex min-h-full flex-1 flex-col justify-center px-6">
-        <div aria-hidden="true" class="absolute inset-x-0 top-0 h-48" />
-        <div class="relative">
-          <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
-            <div class="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:px-0">
-              <div>
+        <!-- Dark Mode SVG -->
+        <div
+          class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden ring-1 ring-white/5 lg:w-1/2 hidden dark:block">
+        </div>
 
-                <div class="mt-6">
-                  <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400 ">
+        <!-- Content Area -->
+        <div class="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
+          <div class="relative px-6 pb-20 pt-22 lg:static lg:px-8">
+            <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg bg-transparent">
+              <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400 ">
                     My passion for creating started when I was 12, just two weeks after my mom brought home a computer.
                     Fueled by curiosity, I taught myself to type and wrote my first program, igniting a lifelong love for
                     technology.
-                  </p>
-                  <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400 ">
-                    While pursuing a career in high finance, I began building tools to automate my work and streamline
-                    team tasks. Then as a small business owner, I quickly realized that my true passion lay in software
-                    development, leading me to transition to coding full-time.
                   </p>
                   <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400 ">
                     In 2007, I began my professional web development journey with small Python apps & web applications,
@@ -39,48 +46,57 @@
                   </p>
                   <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400 ">
                     Outside of coding, I enjoy playing D&D, tinkering with machine learning apps, and writing music. I'm
-                    also a coffee and Red Bull enthusiast, always ready for challenges that solves real-world problems.
+                    also a coffee and Red Bull enthusiast & always ready for challenges that solve real-world problems.
                   </p>
-                </div>
-              </div>
+              <!-- <div class="mt-2">
+
+                <img src="../assets/images/mia-sig-light.png" alt="Mia Dugas signature" class="dark:hidden" />
+
+                <img src="../assets/images/mia-sig-dark.png" alt="Mia Dugas signature" class="hidden dark:block" />
+              </div> -->
+
             </div>
-            <!-- <div class="mt-12 sm:mt-16 lg:mt-0">
-              <div class="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0 rounded-lg bg-neutral-100 dark:bg-neutral-700 transform rotate-6"> -->
-                <!-- <img
-                  class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                  src="../assets/images/mia-abt-me.png"
-                  alt="Inbox user interface" /> -->
-              <!-- </div>
-            </div> -->
-            <div class="mt-12 sm:mt-16 lg:mt-0">
-  <!-- Container for top and bottom squares -->
-  <div class="grid grid-rows-2 gap-4 lg:h-full mx-4">
+          </div>
 
-    <!-- Top square: tilted -->
-    <div class="relative w-full h-48 lg:h-full transform rotate-6 bg-neutral-100 dark:bg-neutral-700 rounded-lg my-4">
-      <!-- You can insert your content here for the top square -->
+          <div class="mt-12 sm:mt-16 lg:mt-0 flex flex-col lg:flex-row lg:items-center">
+  
+  <div class="justify-center lg:justify-end overflow-hidden">
+    <div class="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0 rounded-lg bg-neutral-100 dark:bg-neutral-700 transform rotate-6" >
+      <SpotlightCard
+      mode="after"
+      from="rgba(255,255,255,0.1)"
+      :size="1400"
+      class="group hidden w-164 rounded-2xl border border-white/10 bg-white/5 p-2 pb-4 sm:flex"
+    >
+    <div class="relative">
+    <!-- <NuxtImg
+          width="256"
+          src="/assets/images/mia_me.png"
+          class="relative size-64 rounded-xl object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+          alt="Mia Dugas Profile Picture"
+          aria-label="Mia Dugas Profile Picture"
+        /> -->
+      <img
+        src="../assets/images/mia_me.png"
+        alt="User interface"
+        class="relative size-164 rounded-xl object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+      />
     </div>
-
-    <!-- Bottom square: bordered area -->
-    <div class="relative w-full h-48 lg:h-full border-2 border-neutral-500 dark:border-neutral-400 bg-neutral-100 dark:bg-neutral-700 rounded-lg my-20">
-      <!-- <Socials /> -->
-      <!-- You can insert your content here for the bottom square -->
+    </SpotlightCard>
     </div>
-
   </div>
+
 </div>
 
-          </div>
         </div>
       </div>
     </section>
   </div>
 </template>
+
 <script setup lang="ts">
-import Socials from '~/components/Socials.vue'
+
 </script>
 
-<style scoped>.signature {
-  stroke: #797979;
-  filter: drop-shadow(0 0 10px rgba(121, 121, 121, 0.5));
-}</style>
+<style scoped>
+</style>

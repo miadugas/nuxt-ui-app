@@ -10,7 +10,8 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ">
         <!-- Cards -->
-        <div v-for="item in portfolio" :key="item._id" class="portfolio-item group w-full mx-auto bg-neutral-200 dark:bg-neutral-800">
+        <div v-for="item in portfolio" :key="item._id"
+          class="portfolio-item group w-full mx-auto bg-neutral-200 dark:bg-neutral-800">
           <!-- Mac like browser -->
           <div class="flex gap-1 px-1 py-[2px] bg-neutral-200 dark:bg-neutral-600 rounded-t-lg ">
             <div class="status-dot status-dot-red" />
@@ -19,10 +20,16 @@
           </div>
 
           <div class="portfolio-item-image-container">
-            <div v-if="item.mainImage" @click="openModal(item.mainImage)" class="w-full h-full">
-              <NuxtImg width="1536" :alt="item.title + ' project image'" class="portfolio-item-image"
-                :src="urlFor(item.mainImage).width(800).url()" :aria-label="item.title + ' project image'" />
-            </div>
+            <div v-if="item.mainImage" @click="openModal(item)" class="w-full h-full">
+  <NuxtImg
+    width="1536"
+    :alt="item.title + ' project image'"
+    class="portfolio-item-image"
+    :src="urlFor(item.mainImage).width(800).url()"
+    :aria-label="item.title + ' project image'"
+  />
+</div>
+
             <div v-else class="flex h-64 justify-center items-center rounded-lg bg-gray-200 dark:bg-gray-800">
               <span class="text-sm text-gray-600 dark:text-gray-400">No Image Available</span>
             </div>
@@ -41,9 +48,15 @@
                       {{ new Date(item.publishedAt).toDateString() }}
                     </span>
                   </div>
+
                   <div class="portfolio-item-arrow">
                     <UIcon name="i-heroicons-arrow-right" class="w-3 h-3 text-neutral-400 dark:text-gray-600" />
                   </div>
+                </div>
+                <div>
+                  <span class="portfolio-item-body">
+                    {{ item.excerpt }}
+                  </span>
                 </div>
               </div>
             </NuxtLink>
@@ -64,13 +77,46 @@
     </section>
 
     <!-- Image Modal -->
-    <div v-if="modalImage" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    <!-- <div v-if="modalImage" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
       @click="closeModal">
       <div class="max-w-4xl max-h-[90vh] overflow-auto">
         <NuxtImg :src="urlFor(modalImage).url()" alt="Full size image" class="max-w-full max-h-full object-contain"
           @click.stop />
       </div>
+    </div> -->
+    <!-- Image Modal -->
+    <div v-if="modalImage" class="fixed inset-0 bg-neutral-800 bg-opacity-50 flex items-center justify-center z-[1000] px-4 py-4"
+      @click="closeModal">
+      <div class="relative bg-neutral-50 dark:bg-neutral-800 p-4 rounded-lg shadow-lg max-w-4xl max-h-[90vh] overflow-auto"
+        @click.stop>
+        <button
+  @click="closeModal"
+  class="absolute top-0 right-0 p-2 text-neutral-900 hover:text-neutral-700 dark:text-neutral-200"
+>
+  <!-- Close icon -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-6 w-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+</button>
+        <NuxtImg :src="urlFor(modalImage).url()" alt="Full size image" class="max-w-full max-h-full object-contain" />
+        <div class="mt-6">
+          <span class="text-neutral-600 dark:text-neutral-400 text-sm">
+  {{ getBodyText(modalBody) }}
+</span>
+
+
+        </div>
+      </div>
     </div>
+
+
+
   </div>
 </template>
 
@@ -87,35 +133,44 @@ const portfolio = ref<Array<{
   github: string;
   url: string;
   author: string;
-  mainImage: string;
+  mainImage: any; // Changed from string to any
   categories: Array<{ title: string }>;
   publishedAt: string;
-  body: string;
+  excerpt: string,
+  body: Array<any>;
 }>>([]);
+
 
 const loading = ref(true);
 const error = ref<string | null>(null);
-const modalImage = ref<string | null>(null);
+const modalImage = ref<any>(null);
+  const modalBody = ref<any>(null);
+
+
 
 onMounted(async () => {
   try {
     const query = `*[_type == "portfolio"] {
-      _id,
-      title,
-      slug,
-      url,
-      github,
-      mainImage,
-      publishedAt,
-      categories[]->{title},
-      body[] {
-        ...,
-        children[] { text }
-      }
-    }`;
+  _id,
+  title,
+  slug,
+  url,
+  github,
+  mainImage{
+    asset->
+  },
+  publishedAt,
+  categories[]->{title},
+  body[] {
+    ...,
+    children[] { text }
+  },
+  excerpt,
+}`;
+
 
     const result = await fetchData<typeof portfolio.value>(query);
-    // console.log('Query results:', result);
+    console.log('Query results:', result);
     if (result) {
       portfolio.value = result;
     } else {
@@ -128,13 +183,31 @@ onMounted(async () => {
   }
 });
 
-const openModal = (image: string) => {
-  modalImage.value = image;
+const openModal = (item: any) => {
+  modalImage.value = item.mainImage;
+  modalBody.value = item.body;
 };
+
+
+
 
 const closeModal = () => {
   modalImage.value = null;
 };
+
+const getBodyText = (body: Array<any>) => {
+  if (!body || body.length === 0) return 'No content available';
+  return body
+    .map(block => {
+      if (block.children && Array.isArray(block.children)) {
+        return block.children.map((child: { text: string }) => child.text).join(' ');
+      }
+      return '';
+    })
+    .join(' ');
+};
+
+
 </script>
 
 <style scoped>

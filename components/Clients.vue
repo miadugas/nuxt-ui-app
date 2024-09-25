@@ -28,19 +28,17 @@
         </div>
 
         <div
-          class="mx-auto grid w-full max-w-xl grid-cols-2 items-center gap-y-12 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:pl-8">
+          class="mx-auto grid w-full max-w-xl grid-cols-2 items-center gap-y-4 sm:gap-y-4 lg:mx-0 lg:max-w-none lg:pl-8">
           <div v-for="(client, index) in clients" :key="index" class="flip-container" @mouseover="flipCard(index, true)"
             @mouseleave="flipCard(index, false)">
             <div :class="['flip-card-inner', { flipped: isFlipped[index] }]">
               <div
                 class="flip-card-front flex items-center justify-center w-[235px] h-[80px] p-4 bg-white dark:bg-neutral-800 rounded-xl shadow-md">
-                <!-- <img :src="client.logo" :alt="client.name" class="max-w-full max-h-full object-contain dark:invert dark:brightness-0 dark:contrast-200" /> -->
-                <!-- <NuxtImg :src="client.logo" alt="client.name" width="235" height="80" /> -->
                 <img :src="client.logo" :alt="client.name" class="max-w-full max-h-full object-contain dark:invert dark:brightness-0 dark:contrast-200" />
               </div>
               <div
-                class="flip-card-back flex items-center justify-center w-[235px] h-[80px] p-4 bg-neutral-200 dark:bg-neutral-800 rounded-xl shadow-md">
-                <p class="text-gray-900 dark:text-neutral-50 text-xs">{{ client.info }}</p>
+                class="flip-card-back flex items-center justify-center w-[235px] h-[80px] p-4 bg-neutral-200 dark:bg-neutral-600 rounded-xl shadow-md">
+                <img :src="client.industryIcon" :alt="client.name" class="max-w-full max-h-full object-contain dark:invert dark:brightness-0 dark:contrast-200" />
               </div>
             </div>
 
@@ -65,16 +63,32 @@ import cereLogo from '../assets/images/cere.png';
 import atrendDataLogo from '../assets/images/atrenddata.png';
 import udisLogo from '../assets/images/udi_conag.png';
 
+import financeIcon from '../assets/images/fintech.png';
+import techIcon from '../assets/images/dataCtr.png';
+import dataIcon from '../assets/images/bgDta.png';
+import foodIcon from '../assets/images/healthyFood.png';
+import nonProfitIcon from '../assets/images/nonproft.png';
+import medicalIcon from '../assets/images/medTech.png';
+
+
 // Define your clients array with the imported image paths
 const clients = [
-  { name: 'rocket', logo: rktBigLogo, info: 'With more than $1.5 trillion in home loans since inception & became the first fully digital mortgage experience in 2015.' },
-  { name: 'Morgan Stanley', logo: morganStanleyLogo, info: 'A multinational investment bank and financial services company.' },
-  { name: 'IMH', logo: impacMortgageLogo, info: 'provides innovative mortgage brokering and real estate solutions that address the challenges of the economic environment.' },
-  { name: 'HDC', logo: hdcLogo, info: 'A trusted name in web hosting and managed services since 1997 and a Tier 1 connectivity provider.' },
-  { name: 'EC', logo: ecLogo, info: 'A nonprofit that uses data and research to improve social systems social service agencies and organizations across the United States and internationally.' },
-  { name: 'Cere', logo: cereLogo, info: 'Augmented Intelligence company that develops a predictive analytics platform to diagnose brain injuries or disorders.' },
-  { name: 'AD', logo: atrendDataLogo, info: 'A data warehouse business that partners with corporations across the globe providing tailored data solutions.' },
-  { name: 'Udis', logo: udisLogo, info: 'Part of the M & A team of a venture capital firm investing in commodity contracts; one of them was a small Denver company; Udis Healthy Foods.' }
+  // { name: 'rocket', logo: rktBigLogo, info: 'More than $1.5 trillion in home loans since inception & became known for providing the first fully digital mortgage experience in 2015.' },
+  // { name: 'Morgan Stanley', logo: morganStanleyLogo, info: 'A multinational investment bank and financial services company. Part of the Aquisition of Saxon Mortgage Holdings, a provider of servicing and subservicing of residential mortgage loans.' },
+  // { name: 'IMH', logo: impacMortgageLogo, info: 'Provider of innovative mortgage lending, servicing, portfolio loss mitigation, real estate services, and management of the securitized long-term mortgage portfolios.' },
+  // { name: 'HDC', logo: hdcLogo, info: 'A trusted name in web hosting and managed services since 1997 and a Tier 1 connectivity provider.' },
+  // { name: 'EC', logo: ecLogo, info: 'A nonprofit that uses data and research to improve social systems, social service agencies and organizations across the United States and internationally.' },
+  // { name: 'Cere', logo: cereLogo, info: 'Augmented Intelligence company that developed a web based predictive analytics platform to diagnose brain injuries or disorders.' },
+  // { name: 'AD', logo: atrendDataLogo, info: 'A data warehouse business that partners with corporations across the globe providing tailored data solutions.' },
+  // { name: 'Udis', logo: udisLogo, info: 'Brought in as part of the M & A team of a vc firm investing in commodity contracts; one of them was a local Denver company, Udis Healthy Foods.' }
+  { name: 'rocket', logo: rktBigLogo, industryIcon: financeIcon},
+  { name: 'Morgan Stanley', logo: morganStanleyLogo, industryIcon: financeIcon },
+  { name: 'IMH', logo: impacMortgageLogo, industryIcon: financeIcon },
+  { name: 'HDC', logo: hdcLogo, industryIcon: techIcon },
+  { name: 'EC', logo: ecLogo, industryIcon: nonProfitIcon },
+  { name: 'Cere', logo: cereLogo, industryIcon: medicalIcon },
+  { name: 'AD', logo: atrendDataLogo, industryIcon: dataIcon },
+  { name: 'Udis', logo: udisLogo, industryIcon: foodIcon }
 ];
 
 
@@ -96,7 +110,7 @@ const flipCard = (index: number, flip: boolean) => {
 
 .flip-card-inner {
   width: 235px;
-  height: 80px;
+  height: 140px;
   transition: transform 0.6s;
   transform-style: preserve-3d;
   position: relative;
@@ -122,7 +136,7 @@ const flipCard = (index: number, flip: boolean) => {
 
 /* Ensuring spacing between cards remains the same */
 .grid {
-  gap: 3rem;
+  gap: 1rem;
 }
 
 /* Dark Overlay for better readability */

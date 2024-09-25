@@ -46,6 +46,7 @@ export default defineType({
       type: 'image',
       options: { hotspot: true },
     }),
+    
     // Code block
     defineArrayMember({
       title: 'Code',
@@ -57,11 +58,27 @@ export default defineType({
           { title: 'JavaScript', value: 'javascript' },
           { title: 'HTML', value: 'html' },
           { title: 'CSS', value: 'css' },
+          { title: 'Vue 3 + TypeScript', value: 'vue' }, // Added Vue 3 + TypeScript
+          { title: 'TypeScript', value: 'typescript' }, // Optional: Add TypeScript separately if needed
           { title: 'Python', value: 'python' },
           { title: 'Bash', value: 'bash' },
         ],
         withFilename: true,
       },
+    }),
+    // Horizontal Line block
+    defineArrayMember({
+      title: 'Horizontal Line',
+      name: 'horizontalLine',
+      type: 'object',
+      fields: [
+        {
+          name: 'isHorizontalLine',
+          type: 'boolean',
+          initialValue: true,
+          hidden: true,
+        },
+      ],
     }),
   ],
 })

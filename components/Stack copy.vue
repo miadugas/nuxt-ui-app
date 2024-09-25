@@ -2,7 +2,7 @@
   <div class="py-12 sm:py-12">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
       <div
-        class="p-6 bg-neutral-200 rounded-lg border border-gray-200 shadow-md dark:bg-neutral-800  dark:border-gray-700">
+        class="p-6 bg-neutral-200 rounded-lg border border-gray-200 shadow-md dark:bg-neutral-800 dark:border-gray-700">
         <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-neutral-900 dark:text-neutral-200">
           Tech I Know
         </h2>
@@ -26,11 +26,15 @@
 
         <!-- Tab Navigation -->
         <div class="my-6 hidden sm:block">
-          <ul class="grid grid-flow-col text-center text-gray-500 bg-gray-100 dark:bg-neutral-900  rounded-full p-1">
-
-            <li v-for="tab in tabs" :key="tab.name">
+          <ul class="grid grid-flow-col text-center text-gray-500 bg-gray-100 dark:bg-neutral-900 rounded-full p-1 relative">
+            <!-- Active Tab Indicator -->
+            <div
+              class="absolute bottom-0 h-1 bg-indigo-500 transition-all duration-300"
+              :style="indicatorStyle"></div>
+            <!-- Tab Items -->
+            <li v-for="(tab, index) in tabs" :key="tab.name" class="relative">
               <a href="#" @click="handleTabClick($event, tab.name)"
-                :class="[currentTab === tab.name ? 'bg-white dark:bg-cyan-500 dark:text-gray-100 rounded-full shadow text-indigo-900' : 'text-gray-500', 'flex justify-center py-4']"
+                :class="[currentTab === tab.name ? 'text-indigo-600 dark:text-gray-100 font-semibold' : 'text-gray-500 dark:text-gray-400', 'flex justify-center py-4 px-6 cursor-pointer']"
                 :aria-current="currentTab === tab.name ? 'page' : undefined">
                 {{ tab.name }}
               </a>
@@ -38,79 +42,81 @@
           </ul>
         </div>
 
-        <!-- Content Areas -->
-        <div>
-          <transition name="slide" mode="out-in">
-            <div :key="currentTab">
-              <div v-if="currentTab === 'Frontend'">
-                <div
-                  class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-12 sm:py-12 border-b border-gray-200 text-center rounded-2xl px-6">
-                  <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">Frontend
-                  </h2>
-                  <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">
-                    These are, but not limited to, the tech I use for building client-side applications
-                  </p>
-                  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
-                    <div v-for="stack in frontend" :key="stack.name"
-                      class="relative bg-white shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
-                      <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
-                      <div
-                        class="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
-                        <h3 class="text-lg font-semibold text-gray-900">{{ stack.name }}</h3>
-                        <p class="text-sm text-gray-500">{{ stack.years }} years</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div v-if="currentTab === 'Backend'">
-                <div
-                  class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-12 sm:py-12 border-b border-gray-200 text-center rounded-2xl px-6">
-                  <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">Backend
-                  </h2>
-                  <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">
-                    These are, but not limited to, the tech I use for building fast and scalable backend applications
-                  </p>
-                  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
-                    <div v-for="stack in backend" :key="stack.name"
-                      class="relative bg-white shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
-                      <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
-                      <div
-                        class="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
-                        <h3 class="text-lg font-semibold text-gray-900">{{ stack.name }}</h3>
-                        <p class="text-sm text-gray-500">{{ stack.years }} years</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div v-if="currentTab === 'Tools'">
-                <div
-                  class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-12 sm:py-12 border-b border-gray-200 text-center rounded-2xl px-6">
-                  <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">Tools</h2>
-                  <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">
-                    These are, but not limited to, the tools I use for streamlining development and deployment processes
-                  </p>
-                  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
-                    <div v-for="stack in tools" :key="stack.name"
-                      class="relative bg-white shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
-                      <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
-                      <div
-                        class="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
-                        <h3 class="text-lg font-semibold text-gray-900">{{ stack.name }}</h3>
-                        <p class="text-sm text-gray-500">{{ stack.years }} years</p>
-                      </div>
+        <!-- Transition Wrapper for Content -->
+        <transition name="slide" mode="out-in">
+          <div :key="currentTab">
+            <div v-if="currentTab === 'Frontend'">
+              <!-- Frontend Content -->
+              <div
+                class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-12 sm:py-12 border-b border-gray-200 text-center rounded-2xl px-6">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">Frontend</h2>
+                <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">
+                  These are, but not limited to, the tech I use for building client-side applications
+                </p>
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
+                  <div v-for="stack in frontend" :key="stack.name"
+                    class="relative bg-white shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
+                    <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
+                    <div
+                      class="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
+                      <h3 class="text-lg font-semibold text-gray-900">{{ stack.name }}</h3>
+                      <p class="text-sm text-gray-500">{{ stack.years }} years</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </transition>
-        </div>
+
+            <div v-if="currentTab === 'Backend'">
+              <!-- Backend Content -->
+              <div
+                class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-12 sm:py-12 border-b border-gray-200 text-center rounded-2xl px-6">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">Backend</h2>
+                <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">
+                  These are, but not limited to, the tech I use for building fast and scalable backend applications
+                </p>
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
+                  <div v-for="stack in backend" :key="stack.name"
+                    class="relative bg-white shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
+                    <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
+                    <div
+                      class="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
+                      <h3 class="text-lg font-semibold text-gray-900">{{ stack.name }}</h3>
+                      <p class="text-sm text-gray-500">{{ stack.years }} years</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div v-if="currentTab === 'Tools'">
+              <!-- Tools Content -->
+              <div
+                class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-12 sm:py-12 border-b border-gray-200 text-center rounded-2xl px-6">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">Tools</h2>
+                <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">
+                  These are, but not limited to, the tools I use for streamlining development and deployment processes
+                </p>
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
+                  <div v-for="stack in tools" :key="stack.name"
+                    class="relative bg-white shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
+                    <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
+                    <div
+                      class="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
+                      <h3 class="text-lg font-semibold text-gray-900">{{ stack.name }}</h3>
+                      <p class="text-sm text-gray-500">{{ stack.years }} years</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </transition>
       </div>
     </div>
   </div>
 </template>
+
 
 
 
@@ -210,11 +216,16 @@ const tools: Stack[] = [
   { name: 'MS SQL Server', imageUrl: 'DeviconMicrosoftsqlserver.svg', years: 6 },
   { name: 'Storybook', imageUrl: 'DeviconStorybook.svg', years: 3 },
   { name: 'DigitalOcean', imageUrl: 'DeviconDigitalocean.svg', years: 4 },
+  { name: 'Github', imageUrl: 'LogosGithubIcon.svg', years: 8 },
+  // { name: 'Playwright', imageUrl: 'DeviconPycharm.svg', years: 3 },
+  // { name: 'DrawIO', imageUrl: 'VscodeIconsFileTypeDrawio.svg', years: 4 },
   { name: 'Formkit', imageUrl: 'VscodeIconsFileTypeFormkit.svg', years: 4 },
   { name: 'Xcode', imageUrl: 'DeviconXcode.svg', years: 5 },
+  // { name: 'Apple', imageUrl: 'DeviconApple.svg', years: 10 },
+  // { name: 'GitLab', imageUrl: 'DeviconGitlabWordmark.svg', years: 8 },
   { name: 'VS Code', imageUrl: 'DeviconVscode.svg', years: 10 },
-  { name: 'Visual Studio', imageUrl: 'DeviconVisualstudio.svg', years: 5 },
   { name: 'Pinia', imageUrl: 'LogosPinia.svg', years: 5 },
+  { name: 'Visual Studio', imageUrl: 'DeviconVisualstudio.svg', years: 5 },
 ];
 
 interface Tab {
@@ -263,9 +274,10 @@ onMounted(() => {
 
 <style scoped>
 /* Slide Transition */
-.slide-enter-active,
-.slide-leave-active {
-  transition: transform 0.5s ease, opacity 0.5s ease;
+.slide-enter-active {
+  transition: all 0.5s ease;
+  transform: translateX(100%);
+  opacity: 0;
 }
 
 .slide-enter-from {
@@ -278,32 +290,6 @@ onMounted(() => {
   opacity: 1;
 }
 
-.slide-leave-from {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.slide-leave-to {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-
-/* .slide-enter-active {
-  transition: all 0.5s ease;
-  transform: translateX(100%);
-  opacity: 0;
-}
-
-.slide-enter-from {
-  transform: translateX(100%);
-  opacity: 0;
-} */
-
-/* .slide-enter-to {
-  transform: translateX(0);
-  opacity: 1;
-}
-
 .slide-leave-active {
   transition: all 0.5s ease;
   transform: translateX(0);
@@ -313,7 +299,7 @@ onMounted(() => {
 .slide-leave-to {
   transform: translateX(-100%);
   opacity: 0;
-} */
+}
 
 /* Active Tab Indicator */
 ul.relative {
@@ -324,7 +310,7 @@ ul.relative .indicator {
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: #4f46e5;
-  /* Indigo-500 */
+  background-color: #4f46e5; /* Indigo-500 */
   transition: all 0.3s ease;
-}</style>
+}
+</style>

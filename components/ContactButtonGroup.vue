@@ -25,14 +25,16 @@
         <path fillRule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clipRule="evenodd" />
       </svg>
     </button> -->
-          <button
+          <!-- <button
             class="rounded-md bg-cyan-500 dark:bg-cyan-400
             dark:text-neutral-900 px-3.5 py-2.5 text-sm font-semibold text-neutral-50 shadow-sm hover:bg-cyan-400
             dark:hover:bg-cyan-500 
             dark:hover:text-neutral-900
-            focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500">
+            focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500"
+
+            >
             Let's Talk
-          </button>
+          </button> -->
         </div>
 
         <div class="flex">
@@ -46,14 +48,30 @@
         <path fillRule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clipRule="evenodd" />
       </svg>
     </button> -->
-          <button
+    <!-- <button
             class="rounded-md bg-cyan-500 dark:bg-cyan-400
-            dark:text-neutral-900 px-3.5 py-2.5 text-sm font-semibold text-neutral-50 shadow-sm hover:bg-cyan-400 dark:hover:bg-cyan-500
+            dark:text-neutral-900 px-3.5 py-2.5 text-sm font-semibold text-neutral-50 shadow-sm hover:bg-cyan-400
+            dark:hover:bg-cyan-500 
             dark:hover:text-neutral-900
-            focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500">
+            focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500"
+            @click.prevent="goToLink('https://cal.com/miadugas/15min')">
             Schedule a meeting
           </button>
-        </div>
+        </div> -->
+        <button @click="showCalendlyWidget"
+                  class="inline-flex items-center gap-x-2 rounded-md bg-cyan-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600">
+                  Schedule a Call
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-calendar-search">
+                    <path d="M16 2v4" />
+                    <path d="M21 11.75V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7.25" />
+                    <path d="m22 22-1.875-1.875" />
+                    <path d="M3 10h18" />
+                    <path d="M8 2v4" />
+                    <circle cx="18" cy="18" r="3" />
+                  </svg>
+                </button>
 
         <!-- <SpotlightButton class="border border-cyan/20 dark:border-cyan/10 backdrop-blur-3xl"> -->
         <!-- The button now links directly to Cal with target _blank -->
@@ -69,14 +87,30 @@
       </div>
     </div>
   </div>
+  </div>
+
 </template>
 
 <script setup lang="ts">
-import SpotlightButton from './SpotlightButton.vue'
+// import SpotlightButton from './SpotlightButton.vue'
+const showCalendlyWidget = () => {
+  const calendlyURL = 'https://calendly.com/miadugas/30min';
+  const windowFeatures =
+    'width=800,height=600,status=yes,toolbar=no,menubar=no,location=no,scrollbars=yes';
+  const newWindow = window.open('', '_blank', windowFeatures);
 
-function goToLink(link: string) {
-  window.location.href = link;
-}
+  if (newWindow) {
+    newWindow.document.write(
+      `<html><head><title>Calendly</title></head><body><iframe src="${calendlyURL}" frameborder="0" width="100%" height="100%"></iframe></body></html>`
+    );
+    newWindow.document.close();
+  }
+  return false;
+};
+// function goToLink(link: string) {
+//   window.open(link, '_blank', 'noopener,noreferrer');
+// }
+
 </script>
 
 <style scoped></style>
