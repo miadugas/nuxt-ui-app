@@ -18,8 +18,8 @@ export default defineNuxtConfig({
     useCdn: false // `false` if you want to ensure fresh data
   },
   runtimeConfig: {
-    public: {
-      available: 'true', // Set to 'false' instead of 'true'
+    sanity: {
+      token: '',
     },
   },
   compatibilityDate: '2024-09-08',
