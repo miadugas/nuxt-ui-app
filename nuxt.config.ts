@@ -19,7 +19,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      available: 'false', // Set to 'false' instead of 'true'
+      available: 'true', // Set to 'false' instead of 'true'
     },
   },
   compatibilityDate: '2024-09-08',
