@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/image',
     '@nuxt/image-edge',
+    'vue3-carousel-nuxt',
   ],
   sanity: {
     projectId: 'agt47n3a',

@@ -9,7 +9,7 @@
           'border',
           $colorMode.preference === 'dark'
             ? 'border-neutral-700 bg-neutral-800 text-neutral-50'
-            : 'border-neutral-300 bg-neutral-100 text-neutral-900',
+            : 'border-neutral-300 bg-neutral-300 text-neutral-900',
         ]"
       >
         <nav class="z-10 flex h-[50px] justify-around gap-2 p-1 transition-all duration-300 ease-in-out sm:h-[45px] sm:hover:gap-4">
@@ -22,7 +22,7 @@
               item.to === $route.path
                 ? $colorMode.preference === 'dark'
                   ? 'border border-neutral-700 bg-neutral-900/20 text-cyan-500 shadow-lg backdrop-blur-lg'
-                  : 'border border-neutral-300 bg-neutral-100/60 text-cyan-500 shadow-lg backdrop-blur-lg'
+                  : 'border border-neutral-300 bg-neutral-300/60 dark:bg-neutral-500/60 text-cyan-500 shadow-lg backdrop-blur-lg'
                 : $colorMode.preference === 'dark'
                   ? 'text-neutral-400 hover:text-neutral-200'
                   : 'text-neutral-700 hover:text-neutral-900'

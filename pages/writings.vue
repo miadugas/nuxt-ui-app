@@ -78,7 +78,7 @@ const items = ref<Array<{
   title: string,
   body: string,
   excerpt: string,
-  slug: { current: string },  // Add this line
+  slug: { current: string },  
   publishedAt: string,
   categories: Array<{
     title: string

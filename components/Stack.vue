@@ -1,6 +1,6 @@
 <template>
   <div class="py-12 sm:py-12">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+    <div class="mx-auto max-w-7xl text-center">
       <div
         class="p-6 bg-neutral-200 rounded-lg border border-gray-200 shadow-md dark:bg-neutral-800  dark:border-gray-700">
         <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-neutral-900 dark:text-neutral-200">
@@ -14,7 +14,7 @@
         </p>
 
         <!-- Dropdown Navigation for Small Screens -->
-        <div class="my-6 sm:hidden">
+        <div class="mt-6 sm:hidden">
           <select
             class="block w-full rounded-lg border border-gray-300 bg-white p-3 dark:bg-neutral-900 dark:border-gray-600 dark:text-neutral-200"
             @change="handleSelectChange($event)">
@@ -25,9 +25,8 @@
         </div>
 
         <!-- Tab Navigation -->
-        <div class="my-6 hidden sm:block">
-          <ul class="grid grid-flow-col text-center text-gray-500 bg-gray-100 dark:bg-neutral-900  rounded-full p-1">
-
+        <div class="mt-6 hidden sm:block">
+          <ul class="grid grid-flow-col text-center text-gray-500 bg-gray-100 dark:bg-neutral-900 rounded-tl-full rounded-tr-full p-1">
             <li v-for="tab in tabs" :key="tab.name">
               <a href="#" @click="handleTabClick($event, tab.name)"
                 :class="[currentTab === tab.name ? 'bg-white dark:bg-cyan-500 dark:text-gray-100 rounded-full shadow text-indigo-900' : 'text-gray-500', 'flex justify-center py-4']"
@@ -39,15 +38,15 @@
         </div>
 
         <!-- Content Areas -->
-        <div>
+        <div class="relative overflow-hidden">
           <transition name="slide" mode="out-in">
             <div :key="currentTab">
               <div v-if="currentTab === 'Frontend'">
                 <div
-                  class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-12 sm:py-12 border-b border-gray-200 text-center rounded-2xl px-6">
+                  class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-4 sm:py-4 border-b border-gray-200 text-center rounded-bl-2xl rounded-br-2xl pb-6">
                   <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">Frontend
                   </h2>
-                  <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">
+                  <p class="mt-6 text-lg leading-8 text-gray-500 dark:text-gray-400">
                     These are, but not limited to, the tech I use for building client-side applications
                   </p>
                   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
@@ -65,10 +64,10 @@
               </div>
               <div v-if="currentTab === 'Backend'">
                 <div
-                  class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-12 sm:py-12 border-b border-gray-200 text-center rounded-2xl px-6">
+                  class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-4 sm:py-4 border-b border-gray-200 text-center rounded-bl-2xl rounded-br-2xl pb-6">
                   <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">Backend
                   </h2>
-                  <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">
+                  <p class="mt-6 text-lg leading-8 text-gray-500 dark:text-gray-400">
                     These are, but not limited to, the tech I use for building fast and scalable backend applications
                   </p>
                   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
@@ -86,9 +85,9 @@
               </div>
               <div v-if="currentTab === 'Tools'">
                 <div
-                  class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-12 sm:py-12 border-b border-gray-200 text-center rounded-2xl px-6">
+                  class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-4 sm:py-4 border-b border-gray-200 text-center rounded-bl-2xl rounded-br-2xl pb-6">
                   <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">Tools</h2>
-                  <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">
+                  <p class="mt-6 text-lg leading-8 text-gray-500 dark:text-gray-400">
                     These are, but not limited to, the tools I use for streamlining development and deployment processes
                   </p>
                   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
@@ -185,14 +184,16 @@ const backend: Stack[] = [
   { name: 'Redux', imageUrl: 'DeviconRedux.svg', years: 6 },
   { name: 'GraphQL', imageUrl: 'VscodeIconsFileTypeGraphql.svg', years: 4 },
   { name: '.Net Core', imageUrl: 'DeviconDotnetcore.svg', years: 3 },
+
 ];
 
 const tools: Stack[] = [
-  { name: 'Git', imageUrl: 'DeviconGit.svg', years: 8 },
+{ name: 'Git', imageUrl: 'DeviconGit.svg', years: 8 },
   { name: 'Kubernetes', imageUrl: 'DeviconKubernetes.svg', years: 3 },
-  { name: 'Photoshop', imageUrl: 'DeviconPhotoshop.svg', years: 4 },
+  { name: 'Adobe CC', imageUrl: 'adobe-creative-cloud.svg', years: 4 },
+  // { name: 'Photoshop', imageUrl: 'DeviconPhotoshop.svg', years: 4 },
   { name: 'Figma', imageUrl: 'DeviconFigma.svg', years: 4 },
-  { name: 'Illustrator', imageUrl: 'LogosAdobeIllustrator.svg', years: 3 },
+  // { name: 'Illustrator', imageUrl: 'LogosAdobeIllustrator.svg', years: 3 },
   { name: 'Sketch', imageUrl: 'DeviconSketch.svg', years: 3 },
   { name: 'Jira', imageUrl: 'DeviconJira.svg', years: 3 },
   { name: 'Ionic', imageUrl: 'DeviconIonic.svg', years: 4 },
