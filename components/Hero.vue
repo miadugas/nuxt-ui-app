@@ -4,11 +4,12 @@
       <!-- Text Content -->
       <div class="flex-1 max-w-2xl text-center lg:max-w-xl lg:flex-shrink-0 lg:pt-8 ">
         <h1 class="mt-2 text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-6xl">
-          Nice to meet you!
-        </h1>
-        <span class="mt-10 text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-5xl">
           I'm Mia.
-        </span>
+        </h1>
+        <p class="mt-10 font-bold tracking-tight text-neutral-600 dark:text-neutral-400 sm:text-xl">
+          Practicing minimalist & I build cool things for the web.
+        </p>
+
         <p class="mt-4 text-lg leading-8 text-neutral-600 dark:text-neutral-400">
           Based in Denver, Colorado, I'm a full-stack & lead front-end developer with a passion for bringing innovative
           ideas

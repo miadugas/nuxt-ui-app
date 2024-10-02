@@ -29,6 +29,12 @@
         <div class="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
           <div class="relative px-6 pb-20 pt-22 lg:static lg:px-8">
             <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg bg-transparent">
+              <p class="italic mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+                "Trust yourself like you trust the first 6 Black Sabbath albums."
+              </p>
+              <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400 ">
+                To me, it's about confidence and believing in the creative process, just like those timeless records.
+                  </p>
               <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400 ">
                     My passion for creating started when I was 12, just two weeks after my mom brought home a computer.
                     Fueled by curiosity, I taught myself to type and wrote my first program, igniting a lifelong love for
@@ -48,6 +54,7 @@
                     Outside of coding, I enjoy playing D&D, tinkering with machine learning apps, and writing music. I'm
                     also a coffee and Red Bull enthusiast & always ready for challenges that solve real-world problems.
                   </p>
+
               <!-- <div class="mt-2">
 
                 <img src="../assets/images/mia-sig-light.png" alt="Mia Dugas signature" class="dark:hidden" />

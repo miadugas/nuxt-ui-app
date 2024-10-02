@@ -31,7 +31,7 @@ interface NavigationItem {
 const navigation: NavigationItem[] = [
   {
     name: 'CodePen',
-    href: 'https://codepen.io/',
+    href: 'https://codepen.io/miadugas',
     icon: defineComponent({
       render: () =>
         h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' }, [
@@ -43,7 +43,7 @@ const navigation: NavigationItem[] = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com/',
+    href: 'https://www.linkedin.com/in/miadugas/',
     icon: defineComponent({
       render: () =>
         h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' }, [
@@ -55,7 +55,7 @@ const navigation: NavigationItem[] = [
   },
   {
     name: 'Dribbble',
-    href: 'https://dribbble.com/',
+    href: 'https://dribbble.com/MiaInBatcountry',
     icon: defineComponent({
       render: () =>
         h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' }, [
@@ -67,7 +67,7 @@ const navigation: NavigationItem[] = [
   },
   {
     name: 'GitHub',
-    href: 'https://github.com/',
+    href: 'https://github.com/miadugas',
     icon: defineComponent({
       render: () =>
         h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' }, [
@@ -81,7 +81,7 @@ const navigation: NavigationItem[] = [
   },
   {
     name: 'BlueSky',
-    href: 'https://bsky.app/',
+    href: 'https://bsky.app/profile/miaelyse.bsky.social',
     icon: defineComponent({
       render: () =>
         h('svg', { fill: 'currentColor', viewBox: '0 0 576 512' }, [
