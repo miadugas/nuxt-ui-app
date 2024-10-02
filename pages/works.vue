@@ -21,7 +21,7 @@
 
           <div class="portfolio-item-image-container">
             <div v-if="item.mainImage" @click="openModal(item)" class="w-full h-full">
-  <NuxtImg
+  <img
     width="1536"
     :alt="item.title + ' project image'"
     class="portfolio-item-image"
@@ -104,7 +104,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
   </svg>
 </button>
-        <NuxtImg :src="urlFor(modalImage).url()" alt="Full size image" class="max-w-full max-h-full object-contain" />
+        <img :src="urlFor(modalImage).url()" alt="Full size image" class="max-w-full max-h-full object-contain" />
         <div class="mt-6">
           <span class="text-neutral-600 dark:text-neutral-400 text-sm">
   {{ getBodyText(modalBody) }}
