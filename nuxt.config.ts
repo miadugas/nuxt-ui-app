@@ -21,6 +21,9 @@ export default defineNuxtConfig({
     sanity: {
       token: '',
     },
+    image: {
+      domains: ['cdn.sanity.io'],
+    },
   },
   compatibilityDate: '2024-09-08',
 })
