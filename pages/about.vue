@@ -100,7 +100,7 @@
                   </DisclosureButton>
                 </dt>
                 <DisclosurePanel as="dd" class="mt-6 text-lg text-neutral-600 dark:text-neutral-50">
-                  <p class="text-base leading-7 text-neutral-400">{{ faq.answer }}</p>
+                  <p class="text-base leading-7 text-neutral-600">{{ faq.answer }}</p>
                 </DisclosurePanel>
               </Disclosure>
             </dl>

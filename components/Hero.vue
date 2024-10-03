@@ -17,7 +17,7 @@
           I'm not just about writing code...I'm about building impactful, user-centric products that resonate with and
           breathe life into ideas.
         </p>
-        <div class="mt-4 flex flex-col items-center gap-4">
+        <div class="mt-2 flex flex-col items-center gap-4">
           <ContactButtonGroup class="mt-4" style="--stagger: 2" data-animate />
           <AvailablityButton class="my-4" style="--stagger: 2" data-animate />
         </div>
