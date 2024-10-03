@@ -1,19 +1,18 @@
 <template>
   <div class="flex w-full flex-col gap-4">
     <section class="mx-auto mt-4 flex max-w-7xl flex-col py-10">
-      <h1 class=" text-neutral-900 dark:text-neutral-50 text-center text-4xl mb-2">
+      <h1 class="text-neutral-900 dark:text-neutral-50 text-center text-4xl mb-2">
         Selected Works
       </h1>
       <h2 class="text-center text-lg font-extralight text-neutral-600 dark:text-neutral-400 sm:text-medium mb-14">
         Projects I've worked on
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
         <!-- Cards -->
-        <div v-for="item in portfolio" :key="item._id"
-          class="portfolio-item group w-full mx-auto bg-neutral-200 dark:bg-neutral-800">
+        <div v-for="item in portfolio" :key="item._id" class="portfolio-item group w-full mx-auto bg-neutral-200 dark:bg-neutral-800">
           <!-- Mac like browser -->
-          <div class="flex gap-1 px-1 py-[2px] bg-neutral-200 dark:bg-neutral-600 rounded-t-lg ">
+          <div class="flex gap-1 px-1 py-[2px] bg-neutral-200 dark:bg-neutral-600 rounded-t-lg">
             <div class="status-dot status-dot-red" />
             <div class="status-dot status-dot-yellow" />
             <div class="status-dot status-dot-green" />
@@ -21,8 +20,13 @@
 
           <div class="portfolio-item-image-container">
             <div v-if="item.mainImage" @click="openModal(item)" class="w-full h-full">
-              <img width="1536" :alt="item.title + ' project image'" class="portfolio-item-image"
-                :src="urlFor(item.mainImage).width(800).url()" :aria-label="item.title + ' project image'" />
+              <img
+                width="1536"
+                :alt="item.title + ' project image'"
+                class="portfolio-item-image"
+                :src="urlFor(item.mainImage).width(800).url()"
+                :aria-label="item.title + ' project image'"
+              />
             </div>
 
             <div v-else class="flex h-64 justify-center items-center rounded-lg bg-gray-200 dark:bg-gray-800">
@@ -34,7 +38,7 @@
             <NuxtLink :to="`/portfolio/${item.slug?.current || ''}`" target="_blank" class="block">
               <div
                 class="rounded-t-lg border-x border-t border-white/10 border-b-transparent px-6 py-3 shadow-md backdrop-blur-md w-full m-2">
-                <div class="flex items-center justify-between gap-3">
+                <div class="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <div class="flex items-center gap-3">
                     <span class="portfolio-item-title">
                       {{ item.title }}
@@ -44,12 +48,12 @@
                     </span>
                   </div>
 
-                  <div class="portfolio-item-arrow">
+                  <div class="portfolio-item-arrow mt-2 sm:mt-0">
                     <UIcon name="i-heroicons-arrow-right" class="w-3 h-3 text-neutral-400 dark:text-gray-600" />
                   </div>
                 </div>
                 <div>
-                  <span class="portfolio-item-body m-2">
+                  <span class="portfolio-item-body block m-2 px-2">
                     {{ item.excerpt }}
                   </span>
                 </div>
@@ -57,8 +61,8 @@
             </NuxtLink>
           </div>
           <!-- Stack -->
-          <div class="portfolio-item-stack">
-            <div class="flex items-center gap-3">
+          <div class="portfolio-item-stack mt-4 sm:mt-0">
+            <div class="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
               <div class="portfolio-item-categories">
                 <span v-for="category in item.categories" :key="category.title" class="portfolio-item-category">
                   {{ category.title }}
@@ -68,17 +72,11 @@
           </div>
         </div>
       </div>
-
     </section>
 
-    <div v-if="modalImage"
-      class="fixed inset-0 bg-neutral-800 bg-opacity-50 flex items-center justify-center z-[1000] px-4 py-4"
-      @click="closeModal">
-      <div
-        class="relative bg-neutral-50 dark:bg-neutral-800 p-4 rounded-lg shadow-lg max-w-4xl max-h-[90vh] overflow-auto"
-        @click.stop>
-        <button @click="closeModal"
-          class="absolute top-0 right-0 p-2 text-neutral-900 hover:text-neutral-700 dark:text-neutral-200">
+    <div v-if="modalImage" class="fixed inset-0 bg-neutral-800 bg-opacity-50 flex items-center justify-center z-[1000] px-4 py-4" @click="closeModal">
+      <div class="relative bg-neutral-50 dark:bg-neutral-800 p-4 rounded-lg shadow-lg max-w-4xl max-h-[90vh] overflow-auto" @click.stop>
+        <button @click="closeModal" class="absolute top-0 right-0 p-2 text-neutral-900 hover:text-neutral-700 dark:text-neutral-200">
           <!-- Close icon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -89,14 +87,9 @@
           <span class="text-neutral-600 dark:text-neutral-400 text-sm">
             {{ getBodyText(modalBody) }}
           </span>
-
-
         </div>
       </div>
     </div>
-
-
-
   </div>
 </template>
 
@@ -113,48 +106,41 @@ const portfolio = ref<Array<{
   github: string;
   url: string;
   author: string;
-  mainImage: any; // Changed from string to any
+  mainImage: any;
   categories: Array<{ title: string }>;
   publishedAt: string;
   excerpt: string,
   body: Array<any>;
 }>>([]);
 
-
 const loading = ref(true);
 const error = ref<string | null>(null);
 const modalImage = ref<any>(null);
 const modalBody = ref<any>(null);
 
-
-
 onMounted(async () => {
   try {
     const query = `*[_type == "portfolio"] {
-  _id,
-  title,
-  slug,
-  url,
-  github,
-  mainImage{
-    asset->
-  },
-  publishedAt,
-  categories[]->{title},
-  body[] {
-    ...,
-    children[] { text }
-  },
-  excerpt,
-}`;
-
+      _id,
+      title,
+      slug,
+      url,
+      github,
+      mainImage{
+        asset->
+      },
+      publishedAt,
+      categories[]->{title},
+      body[] {
+        ...,
+        children[] { text }
+      },
+      excerpt,
+    }`;
 
     const result = await fetchData<typeof portfolio.value>(query);
-    console.log('Query results:', result);
     if (result) {
       portfolio.value = result;
-    } else {
-      console.log('No results returned from the query');
     }
   } catch (e) {
     error.value = e instanceof Error ? e.message : 'An unknown error occurred';
@@ -167,9 +153,6 @@ const openModal = (item: any) => {
   modalImage.value = item.mainImage;
   modalBody.value = item.body;
 };
-
-
-
 
 const closeModal = () => {
   modalImage.value = null;
@@ -186,20 +169,4 @@ const getBodyText = (body: Array<any>) => {
     })
     .join(' ');
 };
-
-
 </script>
-
-<style scoped>
-/* Add any scoped styles here */
-.font-newsreader {
-  font-family: "Newsreader", serif;
-}
-
-.text-neutral-600 {
-  color: "#718096";
-}
-
-
-/* Add more styles as needed */
-</style>
