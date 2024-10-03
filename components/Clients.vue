@@ -1,17 +1,17 @@
 <template>
   <div class="relative isolate overflow-hidden">
-    <div class="mx-auto max-w-7xl pb-14 pt-10 sm:pb-12 lg:flex lg:justify-center lg:items-center lg:gap-x-10 lg:pt-10 rounded-2xl bg-neutral-200 dark:bg-neutral-800">
+    <div class="mx-auto max-w-7xl pb-12 pt-10 sm:pb-12 lg:flex lg:justify-center lg:items-center lg:gap-x-10 lg:pt-10 rounded-2xl bg-neutral-200 dark:bg-neutral-800">
       <!-- Text Content -->
       <div class="flex-1 max-w-2xl text-center lg:max-w-xl lg:flex-shrink-0 lg:pt-8 ">
         <h1 class="mt-2 text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-6xl">
           I’ve collaborated with some INCREDIBLE companies
         </h1>
-        <p class="mt-6 text-lg leading-8 text-neutral-600 dark:text-neutral-400">
+        <p class="mt-4 text-lg leading-8 text-neutral-600 dark:text-neutral-400">
           From Fortune 100 giants that shape industries to innovative startups pushing the boundaries of what's
           possible, I've had the privilege to bring diverse visions to life, delivering impactful results every step of
           the way.
         </p>
-        <div class="mt-8 flex items-center gap-x-6 justify-center">
+        <div class="mt-6 flex items-center gap-x-6 justify-center">
           <a href="/about"
             class="rounded-md bg-cyan-500 dark:bg-cyan-400 dark:text-neutral-900 px-3.5 py-2.5 text-sm font-semibold text-neutral-50 shadow-sm hover:bg-cyan-400 dark:hover:bg-cyan-500 dark:hover:text-neutral-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500">
             My Story...So Far
@@ -20,10 +20,10 @@
       </div>
       <!-- Client Logos and Flip Cards -->
       <div class="flex-1 max-w-2xl lg:flex lg:items-center lg:max-w-none lg:flex-none">
-        <div class="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none rounded-2xl bg-neutral-100 dark:bg-neutral-900 mt-10">
-          <div class="rounded-xl bg-neutral-900/5 p-2 ring-1 ring-inset ring-neutral-900/10">
+        <div class="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none rounded-2xl bg-neutral-100 dark:bg-neutral-900 mt-8">
+          <div class="rounded-xl bg-neutral-900/5 p-4 ring-1 ring-inset ring-neutral-900/10">
             <!-- Adjusted Flip Cards Container -->
-            <div class="grid w-full max-w-xl grid-cols-2 items-center gap-y-4 sm:gap-y-4 lg:max-w-none lg:p-8">
+            <div class="grid w-full max-w-xl grid-cols-2 items-center gap-y-4 sm:gap-y-4 lg:max-w-none lg:p-8 sm:p-4">
               <div v-for="(client, index) in clients" :key="index" class="flip-container" @mouseover="flipCard(index, true)"
                 @mouseleave="flipCard(index, false)">
                 <div :class="['flip-card-inner', { flipped: isFlipped[index] }]">

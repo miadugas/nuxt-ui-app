@@ -6,8 +6,8 @@
         <h1 class="mt-2 text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-6xl">
           I'm Mia.
         </h1>
-        <p class="mt-10 font-bold tracking-tight text-neutral-600 dark:text-neutral-400 sm:text-xl">
-          Practicing minimalist & I build cool things for the web.
+        <p class="mt-10 font-bold tracking-tight text-neutral-600 dark:text-neutral-400 sm:text-l">
+          A practicing minimalist & builder of cool things for the web.
         </p>
 
         <p class="mt-4 text-lg leading-8 text-neutral-600 dark:text-neutral-400">

@@ -1,5 +1,5 @@
 <template>
-  <div class="py-12 sm:py-12">
+  <div class="py-10 sm:py-10 mt-4">
     <div class="mx-auto max-w-7xl text-center">
       <div
         class="p-6 bg-neutral-200 rounded-lg border border-gray-200 shadow-md dark:bg-neutral-800  dark:border-gray-700">
@@ -46,7 +46,7 @@
                   class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-4 sm:py-4 border-b border-gray-200 text-center rounded-bl-2xl rounded-br-2xl pb-6">
                   <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">Frontend
                   </h2>
-                  <p class="mt-6 text-lg leading-8 text-gray-500 dark:text-gray-400">
+                  <p class="mt-4 text-lg leading-8 text-gray-500 dark:text-gray-400">
                     These are, but not limited to, the tech I use for building client-side applications
                   </p>
                   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
@@ -67,7 +67,7 @@
                   class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-4 sm:py-4 border-b border-gray-200 text-center rounded-bl-2xl rounded-br-2xl pb-6">
                   <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">Backend
                   </h2>
-                  <p class="mt-6 text-lg leading-8 text-gray-500 dark:text-gray-400">
+                  <p class="mt-4 text-lg leading-8 text-gray-500 dark:text-gray-400">
                     These are, but not limited to, the tech I use for building fast and scalable backend applications
                   </p>
                   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
@@ -87,7 +87,7 @@
                 <div
                   class="bg-neutral-200 dark:bg-neutral-900 dark:border-gray-700 py-4 sm:py-4 border-b border-gray-200 text-center rounded-bl-2xl rounded-br-2xl pb-6">
                   <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">Tools</h2>
-                  <p class="mt-6 text-lg leading-8 text-gray-500 dark:text-gray-400">
+                  <p class="mt-4 text-lg leading-8 text-gray-500 dark:text-gray-400">
                     These are, but not limited to, the tools I use for streamlining development and deployment processes
                   </p>
                   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">

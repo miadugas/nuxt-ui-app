@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center mt-6">
+  <div class="flex justify-center mt-4">
     <!-- Pill-shaped button with availability content -->
     <div
       class="flex items-center justify-center rounded-full bg-gray-500/10 px-5 py-2 text-sm font-semibold leading-6 text-gray-400 ring-1 ring-inset ring-gray-500/20"
