@@ -54,14 +54,6 @@
                 Outside of coding, I enjoy playing D&D, tinkering with machine learning apps, and writing music. I'm
                 also a coffee and Red Bull enthusiast & always ready for challenges that solve real-world problems.
               </p>
-
-              <!-- <div class="mt-2">
-
-                <img src="../assets/images/mia-sig-light.png" alt="Mia Dugas signature" class="dark:hidden" />
-
-                <img src="../assets/images/mia-sig-dark.png" alt="Mia Dugas signature" class="hidden dark:block" />
-              </div> -->
-
             </div>
           </div>
 
@@ -73,13 +65,6 @@
                 <SpotlightCard mode="after" from="rgba(255,255,255,0.1)" :size="1400"
                   class="group hidden w-164 rounded-2xl border border-white/10 bg-white/5 p-2 pb-4 sm:flex">
                   <div class="relative">
-                    <!-- <NuxtImg
-          width="256"
-          src="/assets/images/mia_me.png"
-          class="relative size-64 rounded-xl object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
-          alt="Mia Dugas Profile Picture"
-          aria-label="Mia Dugas Profile Picture"
-        /> -->
                     <img src="../assets/images/mia_me.png" alt="User interface"
                       class="relative size-164 rounded-xl object-cover grayscale transition-all duration-300 group-hover:grayscale-0" />
                   </div>
@@ -91,23 +76,31 @@
 
         </div>
       </div>
-      <div class="bg-white">
-        <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
+      <div>
+        <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-10">
           <div class="mx-auto max-w-4xl divide-y divide-gray-900/10">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl">Frequently asked questions</h2>
+            <div class="text-center">
+              <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-neutral-50 sm:text-4xl">
+                Ask the Developer
+              </h2>
+            </div>
+
             <dl class="mt-10 space-y-6 divide-y divide-gray-900/10">
               <Disclosure as="div" v-for="faq in faqs" :key="faq.question" class="pt-6" v-slot="{ open }">
                 <dt>
                   <DisclosureButton class="flex w-full items-start justify-between text-left text-gray-900">
-                    <span class="text-base font-semibold leading-7">{{ faq.question }}</span>
+                    <span class="text-base font-semibold leading-7 text-neutral-600 dark:text-neutral-200">{{ faq.question
+                    }}</span>
                     <span class="ml-6 flex h-7 items-center">
-                      <PlusSmallIcon v-if="!open" class="h-6 w-6" aria-hidden="true" />
-                      <MinusSmallIcon v-else class="h-6 w-6" aria-hidden="true" />
+                      <UIcon v-if="!open" name="i-heroicons-minus-small"
+                        class="h-6 w-6 text-neutral-600 dark:text-neutral-400" aria-hidden="true" />
+                      <UIcon v-else name="i-heroicons-plus-small" class="h-6 w-6 text-neutral-600 dark:text-neutral-200"
+                        aria-hidden="true" />
                     </span>
                   </DisclosureButton>
                 </dt>
-                <DisclosurePanel as="dd" class="mt-6 text-lg text-neutral-600 dark:text-gray-100">
-                  <p class="text-base leading-7 text-gray-600">{{ faq.answer }}</p>
+                <DisclosurePanel as="dd" class="mt-6 text-lg text-neutral-600 dark:text-neutral-50">
+                  <p class="text-base leading-7 text-neutral-400">{{ faq.answer }}</p>
                 </DisclosurePanel>
               </Disclosure>
             </dl>
@@ -121,7 +114,6 @@
 
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
-// import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/vue/24/outline'
 
 const faqs = [
   {
@@ -131,7 +123,7 @@ const faqs = [
 
   {
     question: "What's the most rewarding project you've worked on?",
-    answer: "Working with a startup to create a product from scratch was incredibly rewarding. Seeing something go from a whiteboard concept to a functional tool that made users' lives easier is why I love this field. There's nothing quite like watching your work make an actual difference.",
+    answer: "Working with a startup to create a product from scratch was incredibly rewarding. Seeing something go from a whiteboard concept to a functional tool that made users' lives easier is why I love this field. There's nothing quite like watching your work make an actual impactful difference.",
   },
   {
     question: "Do you prefer working solo or on a team?",
@@ -147,12 +139,12 @@ const faqs = [
   },
   {
     question: "What do you do when you're creatively stuck?",
-    answer: "Taking a step back helps me. I might take a short walk, write some music, or outline some ideas for a new blog post. And if that fails, caffeine and a playlist with way too much Black Sabbath usually does the trick. Giving my brain some space to breathe usually helps me come back to the problem with fresh eyes.",
+    answer: "Taking a step back helps me. I might take a short walk to the mailbox, write some music, or outline some ideas for a new blog post. And if that fails, caffeine and a playlist with way too much Black Sabbath usually does the trick. Giving my brain some space to breathe usually helps me come back to the problem with fresh eyes and answers.",
   },
   {
 
     question: "What do you enjoy most about JavaScript?",
-    answer: "I'm currently madly in love with Vue 3 and TypeScript, combine that with Vue's reactivity and the Composition API and it makes building complex features feel like a breeze. That said, I appreciate how JavaScript frameworks as a whole have matured. React's component model has basically shaped the way we think about UI development, and Svelte's approach to reactivity is incredibly innovative. Each has its strengths, but Vue 3 stands out for me right now because of how naturally it fits my workflow, especially when paired with TypeScript. And of course, JavaScript itself remains the foundation that ties everything together, offering endless possibilities for creating seamless web experiences.",
+    answer: "I'm currently madly in love with Vue 3 and TypeScript, combine that with Vue's reactivity and the Composition API and it makes building complex features feel like a breeze. That said, I appreciate how JavaScript frameworks as a whole have matured. React's component model has basically shaped the way we think about UI development, and Svelte's approach to reactivity is, in a word,  innovative. Each has its strengths, but Vue 3 stands out for me right now because of how naturally it fits my workflow, especially when paired with TypeScript. And of course, JavaScript itself remains the foundation that ties everything together, offering endless possibilities for creating seamless web experiences.",
   },
 ]
 
