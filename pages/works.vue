@@ -36,8 +36,8 @@
 
           <div class="portfolio-item-footer p-4">
             <NuxtLink :to="`/portfolio/${item.slug?.current || ''}`" target="_blank" class="block">
-              <div class="rounded-lg border border-white/10 px-6 py-3 shadow-md backdrop-blur-md w-full mb-4">
-                <div class="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div class="rounded-lg border border-white/10 px-3 py-3 shadow-md backdrop-blur-md w-full mb-4">
+                <div class="flex items-center justify-between">
                   <div class="flex items-center gap-3">
                     <span class="portfolio-item-title font-semibold text-lg">
                       {{ item.title }}
@@ -47,12 +47,13 @@
                     </span>
                   </div>
 
-                  <div class="portfolio-item-arrow mt-2 sm:mt-0">
-                    <UIcon name="i-heroicons-arrow-right" class="w-3 h-3 text-neutral-400 dark:text-gray-600" />
+                  <!-- Right Content: Arrow -->
+                  <div class="portfolio-item-arrow">
+                    <UIcon name="i-heroicons-arrow-right" class="w-3 h-3 text-neutral-400 dark:text-gray-200 hover:bg-cyan-500 "  />
                   </div>
                 </div>
                 <div class="portfolio-item-body mt-4">
-                  <span class="block m-2 px-2">
+                  <span class="block">
                     {{ item.excerpt }}
                   </span>
                 </div>
@@ -91,7 +92,6 @@
     </div>
   </div>
 </template>
-
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
@@ -174,9 +174,12 @@ const getBodyText = (body: Array<any>) => {
 <style scoped>
 .portfolio-item {
     min-height: 640px; /* Maintain the minimum height */
-    /* Removed aspect-ratio */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.portfolio-item-arrow {
+    flex-shrink: 0; 
 }
 </style>

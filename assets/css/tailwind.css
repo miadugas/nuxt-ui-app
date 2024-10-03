@@ -3,12 +3,26 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  min-width: 475px; 
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  @media (min-width: 768px) {
+    .custom-card {
+      @apply bg-neutral-200 dark:bg-gray-900 p-6 rounded-lg;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .custom-card {
+      @apply bg-neutral-200 dark:bg-gray-900 p-10 rounded-2xl;
+    }
+  }
 }
 
 #app {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;

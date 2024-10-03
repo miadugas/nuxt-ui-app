@@ -20,8 +20,8 @@
 
               <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
             </div>
-            <div class="py-6">
-              <div class="flex items-center justify-between gap-x-4 text-xs pr-4">
+            <div class="py-2">
+              <div class="flex items-center justify-between gap-x-4 text-xs p-4">
 
                 <div class="portfolio-item-categories">
                   <span v-for="category in item.categories" :key="category.title" class="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-semibold leading-6 text-cyan-500 ring-1 ring-inset ring-cyan-500/20">
@@ -34,16 +34,16 @@
               </div>
               <div class="group relative max-w-xl">
                 <h3
-                  class="mt-3 text-xl font-semibold leading-6 text-gray-900 dark:text-gray-100 group-hover:text-cyan-500">
+                  class="mt-1 border-t border-gray-900/5 dark:border-neutral-200 text-xl p-4 font-semibold leading-6 text-gray-900 dark:text-gray-100 group-hover:text-cyan-500">
                   <NuxtLink :to="`/blog/${item.slug.current}`">
                     {{ item.title }}
                   </NuxtLink>
                 </h3>
-                <p class="mt-5 leading-6 text-gray-600 dark:text-gray-300 pr-4 text-md">{{ item.excerpt }}</p>
+                <p class="mt-5 leading-6 text-gray-600 dark:text-gray-300 p-4 text-md">{{ item.excerpt }}</p>
               </div>
-              <div class="mt-6 flex border-t border-gray-900/5 pt-6">
-                <div class="relative flex items-center gap-x-4">
-                  <img :src="item.authorImage" alt="" class="h-10 w-10 rounded-full bg-gray-50 dark:bg-gray-500" />
+              <div class="border-t border-gray-900/5 dark:border-neutral-200 pt-6">
+                <div class="relative flex items-center gap-x-4 pl-2">
+                  <img :src="item.authorImage" alt="" class="h-10 w-10 rounded-full bg-gray-50 dark:bg-gray-500 " />
                   <div class="text-sm leading-6">
                     <p class="font-semibold text-gray-900 dark:text-gray-100">
                       <span class="absolute inset-0" />
@@ -60,9 +60,6 @@
       </div>
     </section>
   </div>
-
-
-  <!-- </div> -->
 </template>
 
 <script setup lang="ts">

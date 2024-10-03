@@ -5,36 +5,6 @@
       <NuxtPage />
     </NuxtLayout>
   </div>
-  <!-- <UContainer>
-    <Navbar />
-    <UCard class="mt-10">
-      <template #header>
-        <div class="flex justify-between">
-          <h1 class="my-custom-style">Welcome to Nuxt UI Starter</h1> 
-          <ColorScheme>
-            <USelect v-model="$colorMode.preference" :options="['system', 'light', 'dark']" />
-          </ColorScheme> 
-        </div>
-      </template>
-      <UButton icon="i-heroicons-book-open" to="https://ui.nuxt.com" target="_blank">
-        Open Nuxt UI Documentation
-      </UButton>
-    </UCard>
-    <div>
-      <h1>{{ title }}</h1>
-      <p v-if="loading">Loading...</p>
-      <p v-else-if="error">Error: {{ error }}</p>
-      <ul v-else-if="items.length">
-        <li v-for="item in items" :key="item._id">
-          <h2>{{ item.title }}</h2>
-          <p>By: {{ item.author }}</p> 
-          <p>Published on: {{ new Date(item.publishedAt).toLocaleDateString() }}</p>
-          <p>{{ item.excerpt }}</p>
-        </li>
-      </ul>
-      <p v-else>No items found.</p>
-    </div>
-  </UContainer> -->
 </template>
 
 <script setup lang="ts">
@@ -50,7 +20,7 @@ const items = ref<Array<{
   title: string, 
   excerpt: string, 
   publishedAt: string, 
-  author: string // Fetching author name directly as a string
+  author: string
 }>>([])
 
 const loading = ref(true)
