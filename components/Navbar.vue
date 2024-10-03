@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto my-2 flex w-full items-center justify-center sm:my-4 xs:mx-4">
+  <div class="mx-auto my-2 flex w-full items-center justify-center">
     <header class="rounded-full">
       <SpotlightButton
         rounded
@@ -12,12 +12,12 @@
             : 'border-neutral-300 bg-neutral-300 text-neutral-900',
         ]"
       >
-        <nav class="z-10 flex h-[50px] justify-around gap-2 p-1 transition-all duration-300 ease-in-out sm:h-[45px] sm:hover:gap-4 xs:gap-1 xs:px-2">
+        <nav class="z-10 flex h-12 justify-around gap-2 p-2 transition-all duration-300 ease-in-out">
           <NuxtLink
             v-for="item in navigation"
             :id="item.name.toLowerCase()"
             :key="item.name"
-            :aria-label="item.name + ' navigation link'"
+            :aria-label="`${item.name} navigation link`"
             :class="[
               item.to === $route.path
                 ? $colorMode.preference === 'dark'
@@ -28,7 +28,7 @@
                   : 'text-neutral-700 hover:text-neutral-900'
             ]"
             :to="item.to"
-            class="flex items-center rounded-full border border-transparent px-4 py-1 transition-all duration-300 ease-in-out hover:border-cyan-500 hover:bg-neutral-800/10 hover:backdrop-blur-xl sm:px-6 xs:px-3"
+            class="flex items-center rounded-full border border-transparent px-4 py-2 transition-all duration-300 ease-in-out hover:border-cyan-500 hover:bg-neutral-800/10 hover:backdrop-blur-xl"
           >
             <UIcon
               :name="item.icon"
@@ -39,7 +39,7 @@
                     ? 'text-neutral-500'
                     : 'text-neutral-700'
               ]"
-              class="size-7 font-light sm:size-6 xs:size-5"
+              class="size-7 font-light"
             />
           </NuxtLink>
         </nav>
@@ -48,6 +48,7 @@
     </header>
   </div>
 </template>
+
 
 <script setup lang="ts">
 import type { Navigation } from '@/composables/useNavigation'
