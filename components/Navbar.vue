@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto my-2 flex w-full items-center justify-center">
+  <div class="mx-auto my-2 flex w-full items-center justify-center sm:my-4 xs:mx-4">
     <header class="rounded-full">
       <SpotlightButton
         rounded
@@ -12,7 +12,7 @@
             : 'border-neutral-300 bg-neutral-300 text-neutral-900',
         ]"
       >
-        <nav class="z-10 flex h-[50px] justify-around gap-2 p-1 transition-all duration-300 ease-in-out sm:h-[45px] sm:hover:gap-4">
+        <nav class="z-10 flex h-[50px] justify-around gap-2 p-1 transition-all duration-300 ease-in-out sm:h-[45px] sm:hover:gap-4 xs:gap-1 xs:px-2">
           <NuxtLink
             v-for="item in navigation"
             :id="item.name.toLowerCase()"
@@ -28,7 +28,7 @@
                   : 'text-neutral-700 hover:text-neutral-900'
             ]"
             :to="item.to"
-            class="flex items-center rounded-full border border-transparent px-4 py-1 transition-all duration-300 ease-in-out hover:border-cyan-500 hover:bg-neutral-800/10 hover:backdrop-blur-xl sm:px-6"
+            class="flex items-center rounded-full border border-transparent px-4 py-1 transition-all duration-300 ease-in-out hover:border-cyan-500 hover:bg-neutral-800/10 hover:backdrop-blur-xl sm:px-6 xs:px-3"
           >
             <UIcon
               :name="item.icon"
@@ -39,7 +39,7 @@
                     ? 'text-neutral-500'
                     : 'text-neutral-700'
               ]"
-              class="size-7 font-light sm:size-6"
+              class="size-7 font-light sm:size-6 xs:size-5"
             />
           </NuxtLink>
         </nav>
