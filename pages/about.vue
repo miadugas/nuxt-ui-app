@@ -143,16 +143,16 @@ const faqs = [
   },
   {
     question: "What's your philosophy on user experience?",
-    answer: "For me, building an effective UX is about empathy: putting myself in the shoes of the user and ensuring the technology feels effortless. The experience should be seamless, intuitive, and accessible for all. I feel that it should be so intuitive that the user doesn't even think about it. They should be able to achieve what they came to do without frustration. Building an effective UX is about empathy: putting myself in the shoes of the user and ensuring the technology feels effortless. If a user doesn’t even notice the design, I’ve done my job right",
+    answer: "For me, building an effective UX is about empathy: putting myself in the shoes of the user and ensuring the technology feels effortless. The experience should be seamless, intuitive, and accessible for all. I feel that it should be so intuitive that the user doesn't even think about it. They should be able to achieve what they came to do without frustration by putting myself in the shoes of the user and ensuring the technology feels effortless. If a user doesn’t even notice the design, I’ve done my job right.",
   },
   {
     question: "What do you do when you're creatively stuck?",
-    answer: "Taking a step back helps me. I might take a walk, write some music, or outline some ideas for a new blog post. And if that fails, caffeine and a playlist with way too much Black Sabbath usually do the trick. Giving my brain some space to breathe usually helps me come back to the problem with fresh eyes.",
+    answer: "Taking a step back helps me. I might take a short walk, write some music, or outline some ideas for a new blog post. And if that fails, caffeine and a playlist with way too much Black Sabbath usually does the trick. Giving my brain some space to breathe usually helps me come back to the problem with fresh eyes.",
   },
   {
 
     question: "What do you enjoy most about JavaScript?",
-    answer: "I'm currently madly in love with Vue 3 and TypeScript combined with Vue's reactivity and the Composition API make building complex features feel like a breeze. That said, I appreciate how JavaScript frameworks as a whole have matured. React's component model has basically shaped the way we think about UI development, and Svelte's approach to reactivity is incredibly innovative. Each has its strengths, but Vue 3 stands out for me right now because of how naturally it fits my workflow, especially when paired with TypeScript. And of course, JavaScript itself remains the foundation that ties everything together, offering endless possibilities for creating seamless web experiences.",
+    answer: "I'm currently madly in love with Vue 3 and TypeScript, combine that with Vue's reactivity and the Composition API and it makes building complex features feel like a breeze. That said, I appreciate how JavaScript frameworks as a whole have matured. React's component model has basically shaped the way we think about UI development, and Svelte's approach to reactivity is incredibly innovative. Each has its strengths, but Vue 3 stands out for me right now because of how naturally it fits my workflow, especially when paired with TypeScript. And of course, JavaScript itself remains the foundation that ties everything together, offering endless possibilities for creating seamless web experiences.",
   },
 ]
 
