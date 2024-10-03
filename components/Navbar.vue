@@ -1,5 +1,6 @@
 <template>
-  <div class="mx-auto my-2 flex w-full items-center justify-center">
+<div class="mx-auto my-2 flex w-full items-center justify-center px-4 sm:px-6 lg:px-8">
+
     <header class="rounded-full">
       <SpotlightButton
         rounded
