@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  min-width: 475px; 
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;

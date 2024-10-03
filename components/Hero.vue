@@ -7,7 +7,7 @@
           I'm Mia.
         </h1>
         <p class="mt-10 font-bold tracking-tight text-neutral-600 dark:text-neutral-400 sm:text-l">
-          A practicing minimalist & builder of cool things for the web.
+          Practicing minimalist & builder of cool things for the web.
         </p>
 
         <p class="mt-4 text-lg leading-8 text-neutral-600 dark:text-neutral-400">

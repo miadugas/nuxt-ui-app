@@ -10,7 +10,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
         <!-- Cards -->
-        <div v-for="item in portfolio" :key="item._id" class="portfolio-item group w-full mx-auto bg-neutral-200 dark:bg-neutral-800">
+        <div v-for="item in portfolio" :key="item._id" class="portfolio-item group w-full mx-auto bg-neutral-200 dark:bg-neutral-800 rounded-lg shadow-md flex flex-col min-h-[480px]">
           <!-- Mac like browser -->
           <div class="flex gap-1 px-1 py-[2px] bg-neutral-200 dark:bg-neutral-600 rounded-t-lg">
             <div class="status-dot status-dot-red" />
@@ -18,8 +18,8 @@
             <div class="status-dot status-dot-green" />
           </div>
 
-          <div class="portfolio-item-image-container">
-            <div v-if="item.mainImage" @click="openModal(item)" class="w-full h-full">
+          <div class="portfolio-item-image-container flex-grow">
+            <div v-if="item.mainImage" @click="openModal(item)" class="w-full h-full cursor-pointer">
               <img
                 width="1536"
                 :alt="item.title + ' project image'"
@@ -34,16 +34,15 @@
             </div>
           </div>
 
-          <div class="portfolio-item-footer">
+          <div class="portfolio-item-footer p-4">
             <NuxtLink :to="`/portfolio/${item.slug?.current || ''}`" target="_blank" class="block">
-              <div
-                class="rounded-t-lg border-x border-t border-white/10 border-b-transparent px-6 py-3 shadow-md backdrop-blur-md w-full m-2">
+              <div class="rounded-lg border border-white/10 px-6 py-3 shadow-md backdrop-blur-md w-full mb-4">
                 <div class="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <div class="flex items-center gap-3">
-                    <span class="portfolio-item-title">
+                    <span class="portfolio-item-title font-semibold text-lg">
                       {{ item.title }}
                     </span>
-                    <span class="portfolio-item-date">
+                    <span class="portfolio-item-date text-sm text-neutral-500">
                       {{ new Date(item.publishedAt).toDateString() }}
                     </span>
                   </div>
@@ -52,21 +51,21 @@
                     <UIcon name="i-heroicons-arrow-right" class="w-3 h-3 text-neutral-400 dark:text-gray-600" />
                   </div>
                 </div>
-                <div>
-                  <span class="portfolio-item-body block m-2 px-2">
+                <div class="portfolio-item-body mt-4">
+                  <span class="block m-2 px-2">
                     {{ item.excerpt }}
                   </span>
                 </div>
               </div>
             </NuxtLink>
-          </div>
-          <!-- Stack -->
-          <div class="portfolio-item-stack mt-4 sm:mt-0">
-            <div class="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-              <div class="portfolio-item-categories">
-                <span v-for="category in item.categories" :key="category.title" class="portfolio-item-category">
-                  {{ category.title }}
-                </span>
+            <!-- Stack -->
+            <div class="portfolio-item-stack mt-4">
+              <div class="flex flex-wrap items-center gap-3">
+                <div class="portfolio-item-categories">
+                  <span v-for="category in item.categories" :key="category.title" class="portfolio-item-category text-sm text-neutral-600 dark:text-neutral-400">
+                    {{ category.title }}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -92,6 +91,7 @@
     </div>
   </div>
 </template>
+
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
@@ -170,3 +170,13 @@ const getBodyText = (body: Array<any>) => {
     .join(' ');
 };
 </script>
+
+<style scoped>
+.portfolio-item {
+    min-height: 640px; /* Maintain the minimum height */
+    /* Removed aspect-ratio */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+</style>
