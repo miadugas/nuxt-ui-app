@@ -139,7 +139,7 @@ const frontend: Stack[] = [
   { name: 'React', imageUrl: 'DeviconReact.svg', years: 8 },
   { name: 'AngularJS', imageUrl: 'DeviconAngularjs.svg', years: 4 },
   { name: 'Angular', imageUrl: 'VscodeIconsFileTypeAngular.svg', years: 4 },
-  // { name: 'Svelte', imageUrl: 'DeviconSvelte.svg', years: 3 },
+  { name: 'Svelte & SvelteKit', imageUrl: 'DeviconSvelte.svg', years: 5 },
   { name: 'JavaScript', imageUrl: 'DeviconJavascript.svg', years: 8 },
   { name: 'TypeScript', imageUrl: 'DeviconTypescript.svg', years: 7 },
   { name: 'HTML5', imageUrl: 'DeviconHtml5Wordmark.svg', years: 10 },
@@ -155,11 +155,11 @@ const frontend: Stack[] = [
   { name: 'NextJS', imageUrl: 'DeviconNextjs.svg', years: 5 },
   { name: 'GatsbyJS', imageUrl: 'DeviconGatsby.svg', years: 4 },
   { name: 'ElectonjS', imageUrl: 'DeviconElectron.svg', years: 4 },
-  { name: 'MaterialUI', imageUrl: 'DeviconMaterialui.svg', years: 6 },
-  { name: 'Vuetify', imageUrl: 'DeviconVuetify.svg', years: 5 },
+  // { name: 'MaterialUI', imageUrl: 'DeviconMaterialui.svg', years: 6 },
+  // { name: 'Vuetify', imageUrl: 'DeviconVuetify.svg', years: 5 },
   { name: 'Dart', imageUrl: 'LogosDart.svg', years: 3 },
   { name: 'Flutter', imageUrl: 'DeviconFlutter.svg', years: 4 },
-  { name: 'Swift', imageUrl: 'DeviconSwift.svg', years: 5 },
+  // { name: 'Swift', imageUrl: 'DeviconSwift.svg', years: 5 },
 ];
 
 const backend: Stack[] = [
@@ -188,7 +188,7 @@ const backend: Stack[] = [
 ];
 
 const tools: Stack[] = [
-{ name: 'Git', imageUrl: 'DeviconGit.svg', years: 8 },
+// { name: 'Git', imageUrl: 'DeviconGit.svg', years: 8 },
   { name: 'Kubernetes', imageUrl: 'DeviconKubernetes.svg', years: 3 },
   { name: 'Adobe CC', imageUrl: 'adobe-creative-cloud.svg', years: 4 },
   // { name: 'Photoshop', imageUrl: 'DeviconPhotoshop.svg', years: 4 },
@@ -197,7 +197,7 @@ const tools: Stack[] = [
   { name: 'Sketch', imageUrl: 'DeviconSketch.svg', years: 3 },
   { name: 'Jira', imageUrl: 'DeviconJira.svg', years: 3 },
   { name: 'Ionic', imageUrl: 'DeviconIonic.svg', years: 4 },
-  { name: 'ESLint', imageUrl: 'DeviconEslint.svg', years: 5 },
+  // { name: 'ESLint', imageUrl: 'DeviconEslint.svg', years: 5 },
   { name: 'Jest', imageUrl: 'SkillIconsJest.svg', years: 5 },
   { name: 'Heroku', imageUrl: 'DeviconHeroku.svg', years: 3 },
   { name: 'Netlify', imageUrl: 'SkillIconsNetlifyLight.svg', years: 4 },
@@ -216,6 +216,8 @@ const tools: Stack[] = [
   { name: 'VS Code', imageUrl: 'DeviconVscode.svg', years: 10 },
   { name: 'Visual Studio', imageUrl: 'DeviconVisualstudio.svg', years: 5 },
   { name: 'Pinia', imageUrl: 'LogosPinia.svg', years: 5 },
+  { name: 'MaterialUI', imageUrl: 'DeviconMaterialui.svg', years: 6 },
+  { name: 'Vuetify', imageUrl: 'DeviconVuetify.svg', years: 5 },
 ];
 
 interface Tab {
