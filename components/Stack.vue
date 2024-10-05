@@ -1,7 +1,7 @@
 <template>
   <div class="py-10 sm:py-10 mt-4">
     <div class="mx-auto max-w-7xl text-center">
-      <div
+      <div 
         class="p-6 bg-neutral-200 rounded-lg border border-gray-200 shadow-md dark:bg-neutral-800  dark:border-gray-700">
         <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-neutral-900 dark:text-neutral-200">
           Tech I Know
@@ -16,7 +16,7 @@
         <!-- Dropdown Navigation for Small Screens -->
         <div class="mt-6 sm:hidden">
           <select
-            class="block w-full rounded-lg border border-gray-300 bg-white p-3 dark:bg-neutral-900 dark:border-gray-600 dark:text-neutral-200"
+            class="block w-full rounded-lg border border-gray-300 bg-neutral-200 p-3 dark:bg-neutral-900 dark:border-gray-600 dark:text-neutral-200"
             @change="handleSelectChange($event)">
             <option v-for="tab in tabs" :key="tab.name" :value="tab.name" :selected="currentTab === tab.name">
               {{ tab.name }}
@@ -51,12 +51,12 @@
                   </p>
                   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
                     <div v-for="stack in frontend" :key="stack.name"
-                      class="relative bg-white shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
+                      class="relative bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
                       <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
                       <div
-                        class="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
-                        <h3 class="text-lg font-semibold text-gray-900">{{ stack.name }}</h3>
-                        <p class="text-sm text-gray-500">{{ stack.years }} years</p>
+                        class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-200 dark:bg-neutral-800 bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
+                        <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-300">{{ stack.name }}</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-300">{{ stack.years }} years</p>
                       </div>
                     </div>
                   </div>
@@ -72,12 +72,12 @@
                   </p>
                   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
                     <div v-for="stack in backend" :key="stack.name"
-                      class="relative bg-white shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
+                      class="relative bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
                       <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
                       <div
-                        class="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
-                        <h3 class="text-lg font-semibold text-gray-900">{{ stack.name }}</h3>
-                        <p class="text-sm text-gray-500">{{ stack.years }} years</p>
+                        class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-200 dark:bg-neutral-800 bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
+                        <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-300">{{ stack.name }}</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-300">{{ stack.years }} years</p>
                       </div>
                     </div>
                   </div>
@@ -92,12 +92,12 @@
                   </p>
                   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
                     <div v-for="stack in tools" :key="stack.name"
-                      class="relative bg-white shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
+                      class="relative bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
                       <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
                       <div
-                        class="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
-                        <h3 class="text-lg font-semibold text-gray-900">{{ stack.name }}</h3>
-                        <p class="text-sm text-gray-500">{{ stack.years }} years</p>
+                        class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-200 dark:bg-neutral-800 bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
+                        <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-300">{{ stack.name }}</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-300">{{ stack.years }} years</p>
                       </div>
                     </div>
                   </div>

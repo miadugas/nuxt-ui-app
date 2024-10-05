@@ -10,7 +10,7 @@
         <div class="mx-auto max-w-2xl lg:max-w-4xl">
 
           <article v-for="item in items" :key="item._id"
-            class="rounded-2xl bg-neutral-50 dark:bg-neutral-900 relative isolate flex flex-col gap-8 lg:flex-row mb-12 ring-1 ring-neutral-200 dark:ring-neutral-600 ">
+            class="rounded-2xl bg-neutral-50 dark:bg-neutral-900 relative isolate flex flex-col lg:flex-row mb-12 ring-1 ring-neutral-200 dark:ring-neutral-600 ">
             <div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
               <div v-if="item.mainImage" class="w-full h-full">
                 <img width="1536" :alt="item.title + ' project image'"

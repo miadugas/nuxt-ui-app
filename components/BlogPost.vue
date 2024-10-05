@@ -13,19 +13,23 @@
         <article v-for="item in items" :key="item._id"
           class="p-6 bg-white rounded-lg border border-neutral-200 shadow-md dark:bg-neutral-900 dark:border-neutral-900">
           <div class="flex justify-between items-center mb-4 text-gray-500">
- 
-            <span v-for="category in item.categories" :key="category.title" class="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-semibold leading-6 text-cyan-500 ring-1 ring-inset ring-cyan-500/20">
+
+            <span v-for="category in item.categories" :key="category.title" class="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-semibold leading-6 text-cyan-500 ring-1 ring-inset ring-cyan-500/20
+  md:px-2 md:py-0.5 md:text-xs sm:text-[10px] sm:px-1.5 sm:py-0.5">
               {{ category.title }}
             </span>
 
-            <span class="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-semibold leading-6 text-cyan-500 ring-1 ring-inset ring-cyan-500/20">              {{
-                new Date(item.publishedAt).toLocaleDateString()
-              }}</span>
+
+            <span class="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-semibold leading-6 text-cyan-500 ring-1 ring-inset ring-cyan-500/20
+  md:px-2 md:py-0.5 md:text-xs sm:text-[10px] sm:px-1.5 sm:py-0.5">
+              {{ new Date(item.publishedAt).toLocaleDateString() }}
+            </span>
+
 
           </div>
           <h2 class="mb-2 text-2xl font-bold tracking-tight text-neutral-900 dark:text-white ">
             <NuxtLink :to="`/blog/${item.slug.current}`" class="hover:text-cyan-500">
-            {{ item.title }}
+              {{ item.title }}
             </NuxtLink>
           </h2>
           <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ item.excerpt }}</p>
@@ -49,7 +53,7 @@ const items = ref<Array<{
   _id: string,
   title: string,
   excerpt: string,
-  slug: { current: string }, 
+  slug: { current: string },
   publishedAt: string,
   categories: Array<{
     title: string
@@ -62,7 +66,7 @@ const error = ref<string | null>(null)
 
 const postsToShow = ref(1);
 
-const showMoreButton = computed(() => postsToShow.value );
+const showMoreButton = computed(() => postsToShow.value);
 
 const showMore = () => {
   window.location.href = '/writings';
@@ -98,6 +102,4 @@ onMounted(async () => {
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
