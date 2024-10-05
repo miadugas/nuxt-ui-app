@@ -50,7 +50,7 @@
           <!-- Portfolio Item Footer -->
           <div class="portfolio-item-footer p-4">
             <NuxtLink
-              :to="`/portfolio/${item.slug?.current || ''}`"
+              :to="`${item.github || ''}`"
               class="block"
             >
               <div
@@ -212,6 +212,7 @@ const getBodyText = (body: Array<any>) => {
 /* Add color change on hover to the arrow icon */
 .arrow-icon {
   transition: color 0.3s ease;
+  height: 18px;
 }
 
 .portfolio-card:hover .arrow-icon {
