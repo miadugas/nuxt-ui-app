@@ -139,7 +139,7 @@ const frontend: Stack[] = [
   { name: 'React', imageUrl: 'DeviconReact.svg', years: 8 },
   { name: 'AngularJS', imageUrl: 'DeviconAngularjs.svg', years: 4 },
   { name: 'Angular', imageUrl: 'VscodeIconsFileTypeAngular.svg', years: 4 },
-  { name: 'Svelte & SvelteKit', imageUrl: 'DeviconSvelte.svg', years: 5 },
+  { name: 'Svelte', imageUrl: 'DeviconSvelte.svg', years: 5 },
   { name: 'JavaScript', imageUrl: 'DeviconJavascript.svg', years: 8 },
   { name: 'TypeScript', imageUrl: 'DeviconTypescript.svg', years: 7 },
   { name: 'HTML5', imageUrl: 'DeviconHtml5Wordmark.svg', years: 10 },

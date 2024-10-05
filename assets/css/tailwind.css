@@ -3,18 +3,26 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html {
   scroll-behavior: smooth;
 }
 
 @layer utilities {
+  /* Mobile Specific Styling (iPhone 15 width: 390px) */
+  @media (max-width: 767px) {
+    .custom-card {
+      @apply bg-neutral-100 dark:bg-gray-800 p-4 rounded-md;
+    }
+  }
+
+  /* Tablet and Above Styling */
   @media (min-width: 768px) {
     .custom-card {
       @apply bg-neutral-200 dark:bg-gray-900 p-6 rounded-lg;
     }
   }
 
+  /* Desktop Styling */
   @media (min-width: 1280px) {
     .custom-card {
       @apply bg-neutral-200 dark:bg-gray-900 p-10 rounded-2xl;
@@ -23,16 +31,18 @@ html {
 }
 
 #app {
+  max-width: 100%;
+  padding: 1rem; /* Adjusted padding for mobile screens */
   margin: 0 auto;
-  padding: 2rem;
   font-weight: normal;
+  
 }
 
 .portfolio-item {
-  @apply relative flex cursor-pointer flex-col gap-1 rounded-lg border p-6 shadow-2xl backdrop-blur-sm transition-all duration-300;
+  @apply relative flex cursor-pointer flex-col gap-1 rounded-lg border p-4 sm:p-6 lg:p-8 shadow-2xl backdrop-blur-sm transition-all duration-300;
   @apply border-gray-200 bg-white/80 dark:border-white/10 dark:bg-zinc-900/80;
   @apply shadow-gray-200/50 dark:shadow-zinc-950/50;
-  min-height: 480px;
+  min-height: 380px; /* Adjusted for smaller screens */
   aspect-ratio: 16 / 9;
 }
 
@@ -42,8 +52,8 @@ html {
 }
 
 .portfolio-item-image-container {
-  @apply flex-grow flex justify-center items-center overflow-hidden rounded-lg mb-4;
-  height: 60%;
+  @apply flex-grow flex justify-center items-center overflow-hidden rounded-md mb-3; /* Adjusted margin and rounding for mobile */
+  height: 50%; /* Adjusted height for better mobile fit */
 }
 
 .portfolio-item-image {
@@ -60,7 +70,7 @@ html {
 }
 
 .portfolio-item-title {
-  @apply text-sm font-semibold transition-colors duration-300;
+  @apply text-base md:text-lg font-semibold transition-colors duration-300;
   @apply text-gray-800 dark:text-white/90;
 }
 
@@ -122,8 +132,5 @@ html {
 }
 
 .portfolio-item-body {
-  @apply text-xs text-gray-600 dark:text-neutral-400;
+  @apply text-xs sm:text-sm text-gray-600 dark:text-neutral-400;
 }
-
-
-
