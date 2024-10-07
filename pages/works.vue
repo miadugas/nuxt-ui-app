@@ -163,7 +163,10 @@ onMounted(async () => {
 
     const result = await fetchData<PortfolioItem[]>(query);
     if (result) {
-      portfolio.value = result;
+      // Sort by publishedAt in descending order
+      portfolio.value = result.sort((a, b) => {
+        return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+      });
     }
   } catch (e) {
     error.value =
@@ -172,6 +175,7 @@ onMounted(async () => {
     loading.value = false;
   }
 });
+
 
 const openModal = (item: PortfolioItem) => {
   modalImage.value = item.mainImage;
