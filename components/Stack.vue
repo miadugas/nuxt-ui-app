@@ -55,8 +55,8 @@
                       <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
                       <div
                         class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-200 dark:bg-neutral-800 bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
-                        <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-300">{{ stack.name }}</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-300">{{ stack.years }} years</p>
+                        <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">{{ stack.name }}</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ stack.years }} years</p>
                       </div>
                     </div>
                   </div>
@@ -76,8 +76,8 @@
                       <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
                       <div
                         class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-200 dark:bg-neutral-800 bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
-                        <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-300">{{ stack.name }}</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-300">{{ stack.years }} years</p>
+                        <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">{{ stack.name }}</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ stack.years }} years</p>
                       </div>
                     </div>
                   </div>
@@ -96,8 +96,8 @@
                       <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
                       <div
                         class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-200 dark:bg-neutral-800 bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
-                        <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-300">{{ stack.name }}</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-300">{{ stack.years }} years</p>
+                        <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">{{ stack.name }}</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ stack.years }} years</p>
                       </div>
                     </div>
                   </div>

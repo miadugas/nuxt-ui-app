@@ -6,7 +6,7 @@
         <h1 class="mt-2 text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-6xl">
           I’ve collaborated with some INCREDIBLE companies
         </h1>
-        <p class="mt-4 text-lg leading-8 text-neutral-600 dark:text-neutral-400">
+        <p class="mt-4 text-lg leading-8 text-gray-500 dark:text-gray-400">
           From Fortune 100 giants that shape industries to innovative startups pushing the boundaries of what's
           possible, I've had the privilege to bring diverse visions to life, delivering impactful results every step of
           the way.

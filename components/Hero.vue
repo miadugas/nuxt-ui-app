@@ -6,11 +6,11 @@
         <h1 class="mt-2 text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-6xl">
           I'm Mia.
         </h1>
-        <p class="mt-10 font-bold tracking-tight text-neutral-600 dark:text-neutral-400 sm:text-l">
+        <p class="mt-10 font-bold tracking-tight text-gray-500 dark:text-gray-400 sm:text-l">
           Practicing minimalist & builder of cool things for the web.
         </p>
 
-        <p class="mt-4 text-lg leading-8 text-neutral-600 dark:text-neutral-400">
+        <p class="mt-4 text-lg leading-8 text-gray-500 dark:text-gray-400">
           Based in Denver, Colorado, I'm a full-stack & lead front-end developer with a passion for bringing innovative
           ideas
           to life. I have a deep love for creating seamless user experiences.

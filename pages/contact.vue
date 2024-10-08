@@ -38,16 +38,16 @@
             <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg bg-transparent">
               <h2 class="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">I am...</h2>
 
-              <p class="mt-2 text-lg text-neutral-600 dark:text-gray-100">
+              <p class="mt-2 text-lg text-gray-500 dark:text-gray-400">
                 Passionate about tackling ambitious and large-scale projects, and I welcome the opportunity to collaborate
                 on your specific software needs.
               </p>
-              <p class="mt-6 text-lg text-neutral-600 dark:text-gray-100">
+              <p class="mt-6 text-lg text-gray-500 dark:text-gray-400">
                 With extensive experience as both a software engineer and developer, I am well-equipped to guide you
                 through every stage of the custom software design and development process. If you have any questions or
                 would like to explore potential ideas, I encourage you to reach out :)
               </p>
-              <p class="mt-6 text-lg text-neutral-600 dark:text-gray-100">
+              <p class="mt-6 text-lg text-gray-500 dark:text-gray-400">
                 I prioritize timely communication and my calendar is always accessible, so don't hesitate to schedule a call to discuss your
                 needs. I look forward to hearing from you & I look forward to the possibility of working together.
               </p>

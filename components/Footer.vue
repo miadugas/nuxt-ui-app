@@ -13,7 +13,7 @@
         </a>
       </div>
       <div class="mt-8 md:order-1 md:mt-0">
-        <p class="text-center text-xs leading-5 text-gray-500">&copy; 2024 MiaCodes, All rights reserved. Made in Colorado.</p>
+        <p class="text-center text-xs leading-5 text-gray-500 dark:text-gray-400">&copy; 2024 MiaCodes, All rights reserved. Made in Colorado.</p>
       </div>
     </div>
   </footer>

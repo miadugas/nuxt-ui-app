@@ -3,7 +3,7 @@
     <section class="mx-auto mt-4 flex flex-col py-10">
       <h1 class="text-neutral-900 dark:text-neutral-50 text-center text-4xl mb-2">About Me</h1>
       <h2 class="text-center text-lg font-extralight
-      italic text-muted text-neutral-600 dark:text-neutral-400 sm:text-medium mb-14">
+      italic text-muted text-gray-500 dark:text-gray-400 sm:text-medium mb-14">
         A few words about me.
       </h2>
       <div class="relative isolate bg-transparent dark:bg-transparent">
@@ -32,25 +32,25 @@
               <p class="italic mt-4 text-lg text-neutral-600 dark:text-neutral-400">
                 "Trust yourself like you trust the first 6 Black Sabbath albums."
               </p>
-              <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400 ">
+              <p class="mt-4 text-lg text-gray-500 dark:text-gray-400 ">
                 To me, it's about confidence and believing in the creative process, just like those timeless records.
               </p>
-              <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400 ">
+              <p class="mt-4 text-lg text-gray-500 dark:text-gray-400 ">
                 My passion for creating started when I was 12, just two weeks after my mom brought home a computer.
                 Fueled by curiosity, I taught myself to type and wrote my first program, igniting a lifelong love for
                 technology.
               </p>
-              <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400 ">
+              <p class="mt-4 text-lg text-gray-500 dark:text-gray-400 ">
                 In 2007, I began my professional web development journey with small Python apps & web applications,
                 growing into a versatile software engineer focused on building inclusive, accessible digital products
                 that addressed specific pain points. I've worked with agencies, consulted for startups, and
                 collaborated with brilliant minds to deliver exceptional products and services.
               </p>
-              <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400 ">
+              <p class="mt-4 text-lg text-gray-500 dark:text-gray-400 ">
                 As a maker and problem solver, I take pride in crafting scalable, full-stack solutions that provide
                 seamless user experiences, all while adhering to Agile principles and best practices.
               </p>
-              <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400 ">
+              <p class="mt-4 text-lg text-gray-500 dark:text-gray-400 ">
                 Outside of coding, I enjoy playing D&D, tinkering with machine learning apps, and writing music. I'm
                 also a coffee and Red Bull enthusiast & always ready for challenges that solve real-world problems.
               </p>
@@ -100,7 +100,7 @@
                   </DisclosureButton>
                 </dt>
                 <DisclosurePanel as="dd" class="mt-6 text-lg text-neutral-600 dark:text-neutral-50">
-                  <p class="text-base leading-7 text-neutral-600">{{ faq.answer }}</p>
+                  <p class="text-base leading-7 text-gray-500 dark:text-gray-400">{{ faq.answer }}</p>
                 </DisclosurePanel>
               </Disclosure>
             </dl>
