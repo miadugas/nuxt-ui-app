@@ -1,6 +1,6 @@
 <template>
   <div class="relative isolate overflow-hidden">
-    <div class="mx-auto max-w-7xl pt-4 px-4 lg:flex lg:justify-center lg:items-center lg:gap-x-10 rounded-2xl bg-neutral-200 dark:bg-neutral-800 pb-10">
+<div class="mx-auto max-w-7xl pt-4 px-4 lg:flex lg:justify-center lg:items-center lg:gap-x-10 rounded-2xl bg-neutral-200 dark:bg-neutral-800 pb-10">
       <!-- Text Content -->
       <div class="flex-1 max-w-2xl text-center lg:max-w-xl lg:flex-shrink-0 lg:pt-8 ">
         <h1 class="mt-4 text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-6xl">
@@ -24,9 +24,19 @@
           <div class="rounded-xl bg-neutral-900/5 p-4 ring-1 ring-inset ring-neutral-900/10">
             <!-- Adjusted Flip Cards Container -->
             <div class="grid w-full max-w-xl grid-cols-2 items-center gap-4 lg:max-w-none sm:p-4">
-              <div v-for="(client, index) in clients" :key="index" class="flip-container" @mouseover="flipCard(index, true)"
-                @mouseleave="flipCard(index, false)">
-                <div :class="['flip-card-inner', { flipped: isFlipped[index] }]">
+
+              <div v-for="(client, index) in clients" 
+              :key="client.name" 
+              class="flip-container" 
+              @mouseover="flipCard(client.name, true)"
+              @mouseleave="flipCard(client.name, false)"
+              @click="toggleFlip(client.name)"
+              tabindex="0"
+              @keydown.enter.prevent="toggleFlip(client.name)"
+              @focus="handleFocus(client.name)"
+              @blur="handleBlur(client.name)"
+              >
+                <div :class="['flip-card-inner', { flipped: isFlipped[client.name] }]">
                   <div
                     class="flip-card-front flex items-center justify-center w-[235px] h-[80px] p-4 bg-white dark:bg-neutral-800 rounded-xl shadow-md">
                     <img :src="client.logo" :alt="client.name"
@@ -49,7 +59,7 @@
 
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { reactive, onMounted } from 'vue';
 import rktBigLogo from '../assets/images/rocket.png';
 import morganStanleyLogo from '../assets/images/morgan-stanley-logo.png';
 import impacMortgageLogo from '../assets/images/Impac_Mortgage_Logo.png';
@@ -70,11 +80,40 @@ const clients = [
   { name: 'AD', logo: atrendDataLogo, industryIcon: dataIcon },
 ];
 
-const isFlipped = ref(new Array(clients.length).fill(false));
+const isFlipped = reactive<Record<string, boolean>>({});
 
-const flipCard = (index: number, flip: boolean) => {
-  isFlipped.value[index] = flip;
+const flipCard = (name: string, flip: boolean) => {
+  isFlipped[name] = flip;
 };
+
+const toggleFlip = (name: string) => {
+  isFlipped[name] = !isFlipped[name];
+};
+
+// Handle focus by flipping the card
+const handleFocus = (name: string) => {
+  isFlipped[name] = true;
+};
+
+// Handle blur by unflipping the card
+const handleBlur = (name: string) => {
+  isFlipped[name] = false;
+};
+
+// Optional: Close all flipped cards when clicking outside
+const handleClickOutside = (event: Event) => {
+  const target = event.target as HTMLElement;
+  if (!target.closest('.flip-container')) {
+    Object.keys(isFlipped).forEach(name => {
+      isFlipped[name] = false;
+    });
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
 </script>
 
 <style scoped>
@@ -90,6 +129,7 @@ const flipCard = (index: number, flip: boolean) => {
   transition: transform 0.6s;
   transform-style: preserve-3d;
   position: relative;
+  cursor: pointer; 
 }
 
 .flipped {
@@ -134,4 +174,9 @@ const flipCard = (index: number, flip: boolean) => {
 .shift-center {
   transform: translateX(30px);
 }
+
+/* .flip-container:focus { */
+  /* Example focus outline */
+  /* outline: 2px solid #b7b8b8;  */
+/* } */
 </style>

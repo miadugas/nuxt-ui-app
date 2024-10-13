@@ -49,9 +49,9 @@
                   <p class="mt-4 text-lg leading-8 text-gray-500 dark:text-gray-400">
                     These are, but not limited to, the tech I use for building client-side applications
                   </p>
-                  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
+                  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8 px-6">
                     <div v-for="stack in frontend" :key="stack.name"
-                      class="relative bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
+                      class="relative bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100 ">
                       <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
                       <div
                         class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-200 dark:bg-neutral-800 bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
@@ -70,7 +70,7 @@
                   <p class="mt-4 text-lg leading-8 text-gray-500 dark:text-gray-400">
                     These are, but not limited to, the tech I use for building fast and scalable backend applications
                   </p>
-                  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
+                  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8 px-6">
                     <div v-for="stack in backend" :key="stack.name"
                       class="relative bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
                       <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
@@ -90,7 +90,7 @@
                   <p class="mt-4 text-lg leading-8 text-gray-500 dark:text-gray-400">
                     These are, but not limited to, the tools I use for streamlining development and deployment processes
                   </p>
-                  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8">
+                  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8 px-6">
                     <div v-for="stack in tools" :key="stack.name"
                       class="relative bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
                       <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
