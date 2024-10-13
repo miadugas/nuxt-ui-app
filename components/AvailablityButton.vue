@@ -41,12 +41,19 @@ const availability = ref([
   //   textColor: 'text-green-500/80',
   // },
   {
-    status: 'unavailable',
-    message: 'On assignment, not available for hire',
-    color: 'bg-red-500',
-    bgColor: 'bg-red-400',
-    textColor: 'text-red-400',
+    status: 'open_for_discussion',
+    message: 'Open to collaborations & conversations',
+    color: 'bg-yellow-500',
+    bgColor: 'bg-yellow-400',
+    textColor: 'text-yellow-500',
   },
+  // {
+  //   status: 'unavailable',
+  //   message: 'On assignment, not available for hire',
+  //   color: 'bg-red-500',
+  //   bgColor: 'bg-red-400',
+  //   textColor: 'text-red-400',
+  // },
 ]);
 
 defineProps({

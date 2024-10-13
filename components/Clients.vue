@@ -1,6 +1,6 @@
 <template>
   <div class="relative isolate overflow-hidden">
-    <div class="mx-auto max-w-7xl pb-12 pt-10 sm:pb-12 lg:flex lg:justify-center lg:items-center lg:gap-x-10 lg:pt-10 rounded-2xl bg-neutral-200 dark:bg-neutral-800">
+    <div class="mx-auto max-w-7xl pt-10 lg:flex lg:justify-center lg:items-center lg:gap-x-10 lg:pt-10 rounded-2xl bg-neutral-200 dark:bg-neutral-800">
       <!-- Text Content -->
       <div class="flex-1 max-w-2xl text-center lg:max-w-xl lg:flex-shrink-0 lg:pt-8 ">
         <h1 class="mt-2 text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-6xl">
