@@ -29,7 +29,7 @@
                   : 'text-neutral-700 hover:text-neutral-900'
             ]"
             :to="item.to"
-            class="flex items-center rounded-full border border-transparent px-2 py-1 sm:px-3 sm:py-2 transition-all duration-300 ease-in-out hover:border-cyan-500 hover:bg-neutral-800/10 hover:backdrop-blur-xl"
+            class="flex items-center rounded-full border border-transparent px-2 py-1 sm:px-3 sm:py-2 transition-all duration-300 ease-in-out  hover:bg-neutral-800/10 hover:backdrop-blur-xl"
           >
             <UIcon
               :name="item.icon"
