@@ -115,6 +115,7 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 
+
 const faqs = [
   {
     question: "What are some challenges you face as a developer?",
