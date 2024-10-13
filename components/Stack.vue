@@ -17,8 +17,12 @@
         <div class="mt-6 sm:hidden">
           <select
             class="block w-full rounded-lg border border-gray-300 bg-neutral-200 p-3 dark:bg-neutral-900 dark:border-gray-600 dark:text-neutral-200"
-            @change="handleSelectChange($event)">
-            <option v-for="tab in tabs" :key="tab.name" :value="tab.name" :selected="currentTab === tab.name">
+            @change="handleSelectChange($event)"
+            :value="currentTab"
+            aria-label="Select Technology Category"
+            >
+            <option v-for="tab in tabs" :key="tab.name" :value="tab.name">
+            <!-- <option v-for="tab in tabs" :key="tab.name" :value="tab.name" :selected="currentTab === tab.name"> -->
               {{ tab.name }}
             </option>
           </select>
@@ -30,7 +34,11 @@
             <li v-for="tab in tabs" :key="tab.name">
               <a href="#" @click="handleTabClick($event, tab.name)"
                 :class="[currentTab === tab.name ? 'bg-white dark:bg-cyan-500 dark:text-gray-100 rounded-full shadow text-indigo-900' : 'text-gray-500', 'flex justify-center py-4']"
-                :aria-current="currentTab === tab.name ? 'page' : undefined">
+                :aria-current="currentTab === tab.name ? 'page' : undefined"
+                role="tab"
+                tabindex="0"
+                @keydown.enter.prevent="handleTabClick($event, tab.name)"
+                >
                 {{ tab.name }}
               </a>
             </li>
@@ -51,10 +59,21 @@
                   </p>
                   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8 px-6">
                     <div v-for="stack in frontend" :key="stack.name"
-                      class="relative bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100 ">
+                      class="relative bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100 cursor-pointer"
+                      @mouseover="showOverlay(stack.name, true)"
+                      @mouseleave="showOverlay(stack.name, false)"
+                      @click="toggleOverlay(stack.name)"
+                      tabindex="0"
+                      @keydown.enter.prevent="toggleOverlay(stack.name)"
+                      :aria-expanded="isOverlayVisible[stack.name] ? 'true' : 'false'"
+                      role="button"
+                      aria-label="View details about {{ stack.name }}"
+                      >
                       <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
                       <div
-                        class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-200 dark:bg-neutral-800 bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
+                        class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-200 dark:bg-neutral-800 bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4"
+                        :class="{ 'opacity-100': isOverlayVisible[stack.name] }"
+                        >
                         <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">{{ stack.name }}</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400">{{ stack.years }} years</p>
                       </div>
@@ -72,10 +91,21 @@
                   </p>
                   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8 px-6">
                     <div v-for="stack in backend" :key="stack.name"
-                      class="relative bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
+                      class="relative bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100 cursor-pointer"
+                      @mouseover="showOverlay(stack.name, true)"
+                      @mouseleave="showOverlay(stack.name, false)"
+                      @click="toggleOverlay(stack.name)"
+                      tabindex="0"
+                      @keydown.enter.prevent="toggleOverlay(stack.name)"
+                      :aria-expanded="isOverlayVisible[stack.name] ? 'true' : 'false'"
+                      role="button"
+                      aria-label="View details about {{ stack.name }}"
+                      >
                       <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
                       <div
-                        class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-200 dark:bg-neutral-800 bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
+                        class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-200 dark:bg-neutral-800 bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4"
+                        :class="{ 'opacity-100': isOverlayVisible[stack.name] }"
+                        >
                         <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">{{ stack.name }}</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400">{{ stack.years }} years</p>
                       </div>
@@ -92,10 +122,21 @@
                   </p>
                   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 mt-8 px-6">
                     <div v-for="stack in tools" :key="stack.name"
-                      class="relative bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100">
+                      class="relative bg-neutral-200 dark:bg-neutral-800 shadow-md rounded-lg p-4 flex items-center justify-center transition hover:bg-gray-100 cursor-pointer"
+                      @mouseover="showOverlay(stack.name, true)"
+                      @mouseleave="showOverlay(stack.name, false)"
+                      @click="toggleOverlay(stack.name)"
+                      tabindex="0"
+                      @keydown.enter.prevent="toggleOverlay(stack.name)"
+                      :aria-expanded="isOverlayVisible[stack.name] ? 'true' : 'false'"
+                      role="button"
+                      aria-label="View details about {{ stack.name }}"
+                      >
                       <img class="h-14 w-14 object-cover" :src="getImageUrl(stack.imageUrl)" :alt="stack.name" />
                       <div
-                        class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-200 dark:bg-neutral-800 bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4">
+                        class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-200 dark:bg-neutral-800 bg-opacity-90 opacity-0 hover:opacity-100 transition-opacity rounded-lg p-4"
+                        :class="{ 'opacity-100': isOverlayVisible[stack.name] }"
+                        >
                         <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">{{ stack.name }}</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400">{{ stack.years }} years</p>
                       </div>
@@ -115,15 +156,21 @@
 
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, reactive, watch, onMounted, onBeforeUnmount } from 'vue';
 
 interface Stack {
-  name?: string;
+  name: string;
   imageUrl: string;
-  years?: number;
+  years: number;
 }
 
-const currentTab = ref<string>('Backend');
+interface Tab {
+  name: string;
+  href: string;
+  current: boolean;
+}
+
+const currentTab = ref<string>('Frontend');
 
 const selectTab = (tabName: string): void => {
   currentTab.value = tabName;
@@ -132,6 +179,11 @@ const selectTab = (tabName: string): void => {
 const handleSelectChange = (event: Event): void => {
   const target = event.target as HTMLSelectElement;
   selectTab(target.value);
+};
+
+const handleTabClick = (event: Event, tabName: string): void => {
+  event.preventDefault(); // Prevent the default anchor behavior
+  selectTab(tabName);
 };
 
 const frontend: Stack[] = [
@@ -232,10 +284,38 @@ const tabs: Tab[] = [
   { name: 'Tools', href: '#', current: true },
 ];
 
-const handleTabClick = (event: Event, tabName: string): void => {
-  event.preventDefault(); // Prevent the default anchor behavior
-  selectTab(tabName);
+// Reactive object to track overlay visibility for each stack item
+const isOverlayVisible = reactive<Record<string, boolean>>({});
+
+// Method to show overlay (used for hover)
+const showOverlay = (name: string, show: boolean): void => {
+  isOverlayVisible[name] = show;
 };
+
+// Method to toggle overlay (used for click/tap)
+const toggleOverlay = (name: string): void => {
+  isOverlayVisible[name] = !isOverlayVisible[name];
+};
+
+// Method to select a tab
+// const selectTab = (tabName: string): void => {
+//   currentTab.value = tabName;
+//   // Optionally, reset overlay visibility when switching tabs
+//   Object.keys(isOverlayVisible).forEach(name => {
+//     isOverlayVisible[name] = false;
+//   });
+// };
+
+// Method to handle global clicks outside stack items to close overlays
+const handleClickOutside = (event: Event): void => {
+  const target = event.target as HTMLElement;
+  if (!target.closest('.stack-item')) {
+    Object.keys(isOverlayVisible).forEach(name => {
+      isOverlayVisible[name] = false;
+    });
+  }
+};
+
 
 const getImageUrl = (name: string): string => {
   return new URL(`../assets/images/icons/${name}`, import.meta.url).href;
@@ -258,9 +338,13 @@ watch(currentTab, () => {
   updateIndicator();
 });
 
-// Initialize indicator on mount
+// Add and remove global click listener
 onMounted(() => {
-  updateIndicator();
+  document.addEventListener('click', handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside);
 });
 </script>
 
@@ -330,4 +414,23 @@ ul.relative .indicator {
   background-color: #4f46e5;
   /* Indigo-500 */
   transition: all 0.3s ease;
-}</style>
+}
+
+/* Overlay Transition */
+.absolute.inset-0 {
+  transition: opacity 0.3s ease;
+}
+
+/* Focus Styles */
+[role="button"]:focus {
+  /* outline: 2px solid #00b4d8;  */
+  /* Example focus outline color */
+  outline-offset: 2px;
+}
+
+/* Cursor Pointer for Interactive Elements */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+</style>
