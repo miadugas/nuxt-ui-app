@@ -23,7 +23,7 @@
               item.to === $route.path
                 ? $colorMode.preference === 'dark'
                   ? 'border border-neutral-700 bg-neutral-900/20 text-cyan-500 shadow-lg backdrop-blur-lg'
-                  : 'border border-neutral-300 bg-neutral-300/60 dark:bg-neutral-500/60 text-cyan-500 shadow-lg backdrop-blur-lg'
+                  : 'border  dark:bg-neutral-500/60 text-cyan-500  backdrop-blur-lg'
                 : $colorMode.preference === 'dark'
                   ? 'text-neutral-400 hover:text-neutral-200'
                   : 'text-neutral-700 hover:text-neutral-900'
