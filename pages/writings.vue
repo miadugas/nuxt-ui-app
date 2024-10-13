@@ -121,7 +121,7 @@ onMounted(async () => {
 }`
 
     const result = await fetchData<typeof items.value>(query)
-    console.log(result)
+    // console.log(result)
     if (result) {
       items.value = result
     } else {
