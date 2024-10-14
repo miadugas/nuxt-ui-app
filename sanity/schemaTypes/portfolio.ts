@@ -25,6 +25,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'platform',
+      title: 'Platform',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'platform'}}],
+    }),
+    defineField({
       name: 'url',
       title: 'Url',
       type: 'string',

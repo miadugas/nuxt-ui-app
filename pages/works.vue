@@ -8,6 +8,26 @@
         Projects I've worked on
       </h2>
 
+      <!-- Platform Selector -->
+      <div class="mb-8 flex justify-center">
+        <div class="w-full max-w-[400px] text-center">
+          <label for="platform-selector" class="block text-sm font-medium leading-6 text-gray-900 dark:text-neutral-50">
+            Filter by Platform:
+          </label>
+          <select id="platform-selector" v-model="selectedPlatform" name="platform"
+            class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 dark:bg-neutral-700 dark:text-neutral-50 dark:ring-neutral-600 sm:text-sm sm:leading-6">
+            <option value="">All Platforms</option>
+            <option
+              v-for="platform in platformOptions"
+              :key="platform"
+              :value="platform"
+            >
+              {{ platform }}
+            </option>
+          </select>
+        </div>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
         <!-- Portfolio Cards -->
         <article
@@ -15,6 +35,7 @@
           :key="item._id"
           class="portfolio-item group w-full mx-auto bg-neutral-200 dark:bg-neutral-800 rounded-lg shadow-md flex flex-col"
         >
+
           <!-- Browser-like Header -->
           <div class="flex gap-1 px-2 py-1 bg-neutral-200 dark:bg-neutral-600 rounded-t-lg">
             <span class="status-dot status-dot-red" />
@@ -140,6 +161,7 @@ interface PortfolioItem {
   slug: { current: string };
   github: string;
   url: string;
+  platform: Array<{ title: string }>;
   author: string;
   mainImage: any;
   categories: Array<{ title: string }>;
@@ -151,6 +173,9 @@ interface PortfolioItem {
 const { fetchData, urlFor } = useSanityHelper();
 
 const portfolio = ref<PortfolioItem[]>([]);
+const selectedPlatform = ref<string>(''); // Store the selected platform
+const platformOptions = ref<string[]>([]); // Store available platforms
+
 
 const loading = ref(true);
 const error = ref<string | null>(null);
@@ -165,6 +190,7 @@ onMounted(async () => {
       slug,
       url,
       github,
+      platform[]->{title},
       mainImage{
         asset->
       },
@@ -183,6 +209,13 @@ onMounted(async () => {
       portfolio.value = result.sort((a, b) => {
         return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
       });
+            // Extract unique platform titles for the dropdown
+            const platforms = new Set(result.flatMap(item => item.platform.map(p => p.title)));
+      platformOptions.value = Array.from(platforms);
+
+      // Debugging: Log the result and platforms
+      console.log('Portfolio:', result);
+      console.log('Platforms:', platformOptions.value);
     }
   } catch (e) {
     error.value =
@@ -215,6 +248,16 @@ const getBodyText = (body: Array<any>) => {
     })
     .join(' ');
 };
+
+// Computed property to filter portfolio items based on the selected platform
+const filteredPortfolio = computed(() => {
+  if (!selectedPlatform.value) {
+    return portfolio.value; // Show all items if no platform is selected
+  }
+  return portfolio.value.filter(item =>
+    item.platform.some(platform => platform.title === selectedPlatform.value)
+  );
+});
 </script>
 
 <style scoped>
