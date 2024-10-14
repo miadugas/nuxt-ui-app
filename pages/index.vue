@@ -3,7 +3,7 @@
 <Hero />
 <Clients />
 <Stack />
-<!-- <LatestWork /> -->
+<LatestWork />
   </div>
 </template>
 
@@ -11,7 +11,7 @@
 import Hero from '@/components/Hero.vue'
 import Clients from '@/components/Clients.vue'
 import Stack from '@/components/Stack.vue'
-// import LatestWork from '@/components/LatestWork.vue'
+import LatestWork from '@/components/LatestWork.vue'
 </script>
 
 <style scoped>
