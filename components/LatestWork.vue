@@ -1,72 +1,150 @@
 
 <template>
-  <div class="mx-auto max-w-7xl py-6 px-4 lg:flex lg:justify-center lg:items-center lg:gap-x-10 rounded-2xl bg-neutral-200 dark:bg-neutral-800">
-    <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
-      <div class="mx-auto max-w-xl px-6 lg:col-start-2 lg:mx-0 lg:max-w-none lg:px-0 ">
-        <div>
-          <div class="">
-            <h2 class="text-3xl lg:text-4xl tracking-tight font-extrabold text-neutral-900 dark:text-neutral-200">
-              Latest Personal Build...What's In Flight?
-            </h2>
-            <p class="text-lg leading-8 text-gray-500 dark:text-gray-400 border-b border-gray-700 pb-4 mt-4 px-4">
-              When I have time to work on passion projects, I like to build things that I find to be fun, interesting, and useful. This is a snapshot of some of my not quite done "in flight" projects that I'm working on right now.
-            </p>
-
+  <div
+    class="mx-auto max-w-7xl py-6 px-4 bg-neutral-200 dark:bg-neutral-800 rounded-2xl lg:flex lg:items-center lg:justify-center lg:gap-x-10"
+  >
+    <div
+      class="lg:mx-auto lg:max-w-7xl lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24 lg:px-8"
+    >
+      <div class="mx-auto max-w-xl px-6 lg:col-start-2 lg:mx-0 lg:max-w-none lg:px-0">
+        <h2
+          class="text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-200 lg:text-4xl"
+        >
+          Latest Personal Build...What's In Flight?
+        </h2>
+        <p
+          class="mt-4 px-4 pb-4 text-lg leading-8 text-neutral-500 dark:text-neutral-400 border-b border-gray-700"
+        >
+          When I have time to work on passion projects, I like to build things that I find to be fun,
+          interesting, and useful. This is a snapshot of some of my not quite done "in flight"
+          projects that I'm working on right now.
+        </p>
+        <section class="mt-4">
+          <div class="container mx-auto px-6">
+            <h3
+              class="mb-4 text-xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-200"
+            >
+              Frequently Asked Questions
+            </h3>
+            <div>
+              <div v-for="(item, index) in faqItems" :key="index">
+                <button @click="toggleFAQ(index)" class="flex w-full items-center focus:outline-none">
+                  <svg
+                    :class="[
+                      'w-6 h-6 flex-shrink-0 text-cyan-500',
+                      { 'transform rotate-45': !item.isOpen }
+                    ]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                  </svg>
+                  <h1
+                    class="mt-4 px-4 pb-4 text-lg leading-8 text-neutral-500 dark:text-neutral-400"
+                  >
+                    {{ item.question }}
+                  </h1>
+                </button>
+                <div v-if="item.isOpen" class="flex mt-2 md:mx-10">
+                  <span class="border border-cyan-500"></span>
+                  <p class="max-w-3xl px-4 text-neutral-500 dark:text-neutral-300 mb-4">
+                    {{ item.answer }}
+                  </p>
+                </div>
+                <hr class="my-2 border-gray-200 dark:border-gray-700" />
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
       </div>
-      <div class="mt-12 sm:mt-16 lg:col-start-1 lg:mt-0">
+      <div class="mt-12 lg:col-start-1 lg:mt-0 sm:mt-16">
         <div class="lg:relative lg:h-full">
           <div class="mx-auto max-w-xl px-6 lg:px-0">
             <div class="overflow-hidden rounded-xl shadow-xl ring-1 ring-black ring-opacity-5">
-              
-              <img class="w-full h-auto object-cover lg:h-full lg:w-full" src="../assets/images/flight.png" alt="Customer profile user interface" />
+              <img
+                class="w-full h-auto object-cover lg:h-full lg:w-full"
+                src="../assets/images/flight.png"
+                alt="Customer profile user interface"
+              />
             </div>
           </div>
-          <!-- image gallery -->
-          <section class="mt-2">
-              <div class="w-full h-full select-none p-2 bg-neutral-900/5 border rounded-lg shadow-md dark:bg-neutral-800 dark:border-gray-900 dark:shadow-lg">
-                <div class="max-w-6xl mx-auto duration-1000 delay-300 opacity-0 select-none ease animate-fade-in-view"
-                  style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">
-                  <ul ref="gallery" id="gallery" class="grid grid-cols-2 gap-3 lg:grid-cols-3">
-                    <li v-for="(image, index) in images" :key="index">
-                      <img @click="imageGalleryOpen(index)" :src="image.src" :alt="image.alt"
-                        class="object-cover select-none w-full h-full cursor-pointer aspect-[16/9] lg:aspect-[4/3] xl:aspect-[3/2] p-2 bg-white dark:bg-neutral-800 rounded-xl shadow-md hover:opacity-40">
-                    </li>
-                  </ul>
-                </div>
-                <Teleport to="body">
-                  
-                  <div v-if="imageGalleryOpened" @click="imageGalleryClose" @keydown.esc="imageGalleryClose"
-                    class="fixed inset-0 z-[99] flex items-center justify-center bg-black bg-opacity-50 select-none cursor-zoom-out">
-                    <div class="relative flex items-center justify-center w-11/12 xl:w-4/5 h-11/12">
-                      <div @click.stop="imageGalleryPrev"
-                        class="absolute left-0 flex items-center justify-center text-white -translate-x-10 rounded-full cursor-pointer xl:-translate-x-24 2xl:-translate-x-32 bg-white/10 w-14 h-14 hover:bg-white/20 bg-cyan-300">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                          stroke-width="1.5" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                        </svg>
-                      </div>
-                      <img v-if="imageGalleryOpened" :src="imageGalleryActiveUrl ?? undefined" alt=""
-                        class="object-contain object-center w-full h-full select-none cursor-zoom-out">
-                      <div @click.stop="imageGalleryNext"
-                        class="absolute right-0 flex items-center justify-center text-white -translate-x-10 rounded-full cursor-pointer xl:translate-x-24 2xl:-translate-x-32 bg-white/10 w-14 h-14 hover:bg-white/20 bg-cyan-300">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                          stroke-width="1.5" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                        </svg>
-                      </div>
+          <!-- Image Gallery -->
+          <section class="mt-6">
+            <div
+              class="w-full h-full p-2 bg-neutral-900/5 border rounded-lg shadow-md select-none dark:bg-neutral-800 dark:border-gray-900 dark:shadow-lg"
+            >
+              <div
+                class="mx-auto max-w-6xl opacity-0 animate-fade-in-view duration-1000 delay-300 ease select-none"
+                style="opacity: 1; transform: translate(0px, 0px);"
+              >
+                <ul ref="gallery" id="gallery" class="grid grid-cols-2 gap-3 lg:grid-cols-3">
+                  <li v-for="(image, index) in images" :key="index">
+                    <img
+                      @click="imageGalleryOpen(index)"
+                      :src="image.src"
+                      :alt="image.alt"
+                      class="w-full h-full p-2 bg-white rounded-xl shadow-md object-cover cursor-pointer aspect-[16/9] select-none hover:opacity-40 dark:bg-neutral-800 lg:aspect-[4/3] xl:aspect-[3/2]"
+                    />
+                  </li>
+                </ul>
+              </div>
+              <Teleport to="body">
+                <div
+                  v-if="imageGalleryOpened"
+                  @click="imageGalleryClose"
+                  @keydown.esc="imageGalleryClose"
+                  class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 cursor-zoom-out select-none"
+                >
+                  <div class="relative flex items-center justify-center w-11/12 h-11/12 xl:w-4/5">
+                    <div
+                      @click.stop="imageGalleryPrev"
+                      class="absolute left-0 flex items-center justify-center w-14 h-14 bg-white/10 rounded-full cursor-pointer text-white -translate-x-10 hover:bg-white/20 xl:-translate-x-24 2xl:-translate-x-32"
+                    >
+                      <svg
+                        class="w-6 h-6"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                      </svg>
+                    </div>
+                    <img
+                      v-if="imageGalleryOpened"
+                      :src="computedImageGalleryActiveUrl"
+                      alt=""
+                      class="w-full h-full object-contain cursor-zoom-out select-none"
+                    />
+                    <div
+                      @click.stop="imageGalleryNext"
+                      class="absolute right-0 flex items-center justify-center w-14 h-14 bg-white/10 rounded-full cursor-pointer text-white -translate-x-10 hover:bg-white/20 xl:translate-x-24 2xl:-translate-x-32"
+                    >
+                      <svg
+                        class="w-6 h-6"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                      </svg>
                     </div>
                   </div>
-                </Teleport>
-              </div>
-            </section>
+                </div>
+              </Teleport>
+            </div>
+          </section>
         </div>
-        
       </div>
     </div>
   </div>
 </template>
+
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
@@ -124,6 +202,44 @@ const imageGalleryPrev = () => {
     imageGalleryImageIndex.value! -= 1;
   }
   imageGalleryActiveUrl.value = images[imageGalleryImageIndex.value].src;
+};
+
+interface FAQItem {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+}
+
+const faqItems = ref<FAQItem[]>([
+  {
+    question: 'What is it and why did you build it?',
+    answer: 'I have a finance background and currently work in financial tech so I wanted to build a sort of "know your financing options" type of application. I also wanted to build something that was fun and engaging for users to interact with.',
+    isOpen: false
+  },
+  {
+    question: 'What technologies did you use to build this?',
+    answer: 'I used Vue 3, Tailwind CSS, and Vite for the front end. For the backend I plan to use Node.js, Express, and MongoDB. I also plan to use the Plaid API for the banking data.',
+    isOpen: false
+  },
+  // {
+  //   question: 'What are your opening hours ?',
+  //   answer: 'Our opening hours are...',
+  //   isOpen: false
+  // },
+  // {
+  //   question: 'Do I need a referral ?',
+  //   answer: 'Information about referrals...',
+  //   isOpen: false
+  // },
+  // {
+  //   question: 'Is the cost of the appointment covered by private health insurance ?',
+  //   answer: 'Information about health insurance coverage...',
+  //   isOpen: false
+  // }
+]);
+
+const toggleFAQ = (index: number) => {
+  faqItems.value[index].isOpen = !faqItems.value[index].isOpen;
 };
 
 onMounted(() => {
