@@ -1,21 +1,32 @@
 <template>
   <div class="portfolio-container flex w-full flex-col gap-8 px-4 md:px-8">
     <section class="mx-auto mt-4 flex max-w-6xl flex-col py-12">
-      <h1 class="text-neutral-900 dark:text-neutral-50 text-center text-4xl mb-4">
+      <h1
+        class="text-neutral-900 dark:text-neutral-50 text-center text-4xl mb-4"
+      >
         Selected Works
       </h1>
-      <h2 class="text-center text-lg font-extralight text-neutral-600 dark:text-neutral-400 mb-12">
+      <h2
+        class="text-center text-lg font-extralight text-neutral-600 dark:text-neutral-400 mb-12"
+      >
         Projects I've worked on
       </h2>
 
       <!-- Platform Selector -->
       <div class="mb-8 flex justify-center">
         <div class="w-full max-w-[400px] text-center">
-          <label for="platform-selector" class="block text-sm font-medium leading-6 text-gray-900 dark:text-neutral-50">
+          <label
+            for="platform-selector"
+            class="block text-sm font-medium leading-6 text-gray-900 dark:text-neutral-50"
+          >
             Filter by Platform:
           </label>
-          <select id="platform-selector" v-model="selectedPlatform" name="platform"
-            class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 dark:bg-neutral-700 dark:text-neutral-50 dark:ring-neutral-600 sm:text-sm sm:leading-6">
+          <select
+            id="platform-selector"
+            v-model="selectedPlatform"
+            name="platform"
+            class="mt-2 block w-full rounded-md py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-cyan-600 dark:bg-neutral-700 dark:text-neutral-50 dark:ring-neutral-600 sm:text-sm sm:leading-6 border border-gray-300"
+          >
             <option value="">All Platforms</option>
             <option
               v-for="platform in platformOptions"
@@ -31,13 +42,14 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
         <!-- Portfolio Cards -->
         <article
-          v-for="item in portfolio"
-          :key="item._id"
+        v-for="item in filteredPortfolio"  
+        :key="item._id"
           class="portfolio-item group w-full mx-auto bg-neutral-200 dark:bg-neutral-800 rounded-lg shadow-md flex flex-col"
         >
-
           <!-- Browser-like Header -->
-          <div class="flex gap-1 px-2 py-1 bg-neutral-200 dark:bg-neutral-600 rounded-t-lg">
+          <div
+            class="flex gap-1 px-2 py-1 bg-neutral-200 dark:bg-neutral-600 rounded-t-lg"
+          >
             <span class="status-dot status-dot-red" />
             <span class="status-dot status-dot-yellow" />
             <span class="status-dot status-dot-green" />
@@ -70,10 +82,7 @@
 
           <!-- Portfolio Item Footer -->
           <div class="portfolio-item-footer p-6">
-            <NuxtLink
-              :to="`${item.github || ''}`"
-              class="block"
-            >
+            <NuxtLink :to="`${item.github || ''}`" class="block">
               <div
                 class="portfolio-card rounded-lg border border-white/10 px-4 py-4 shadow-md backdrop-blur-md w-full mb-4 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition"
               >
@@ -131,15 +140,40 @@
     </section>
 
     <!-- Modal -->
-    <div v-if="modalImage" class="fixed inset-0 bg-neutral-800 bg-opacity-50 flex items-center justify-center z-[1000] px-4 py-4" @click="closeModal">
-      <div class="relative bg-neutral-50 dark:bg-neutral-800 p-4 rounded-lg shadow-lg max-w-4xl max-h-[90vh] overflow-auto" @click.stop>
-        <button @click="closeModal" class="absolute top-0 right-0 p-2 text-neutral-900 hover:text-neutral-700 dark:text-neutral-200">
+    <div
+      v-if="modalImage"
+      class="fixed inset-0 bg-neutral-800 bg-opacity-50 flex items-center justify-center z-[1000] px-4 py-4"
+      @click="closeModal"
+    >
+      <div
+        class="relative bg-neutral-50 dark:bg-neutral-800 p-4 rounded-lg shadow-lg max-w-4xl max-h-[90vh] overflow-auto"
+        @click.stop
+      >
+        <button
+          @click="closeModal"
+          class="absolute top-0 right-0 p-2 text-neutral-900 hover:text-neutral-700 dark:text-neutral-200"
+        >
           <!-- Close icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
-        <img :src="urlFor(modalImage).url()" alt="Full size image" class="max-w-full max-h-full object-contain" />
+        <img
+          :src="urlFor(modalImage).url()"
+          alt="Full size image"
+          class="max-w-full max-h-full object-contain"
+        />
         <div class="mt-6">
           <span class="text-neutral-600 dark:text-neutral-400 text-sm">
             {{ getBodyText(modalBody) }}
@@ -150,10 +184,9 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { useSanityHelper } from '~/composables/useSanityHelper';
+import { ref, onMounted } from "vue";
+import { useSanityHelper } from "~/composables/useSanityHelper";
 
 interface PortfolioItem {
   _id: string;
@@ -173,14 +206,15 @@ interface PortfolioItem {
 const { fetchData, urlFor } = useSanityHelper();
 
 const portfolio = ref<PortfolioItem[]>([]);
-const selectedPlatform = ref<string>(''); // Store the selected platform
+const selectedPlatform = ref<string>(""); // Store the selected platform
 const platformOptions = ref<string[]>([]); // Store available platforms
-
 
 const loading = ref(true);
 const error = ref<string | null>(null);
 const modalImage = ref<any>(null);
 const modalBody = ref<any>(null);
+
+
 
 onMounted(async () => {
   try {
@@ -207,24 +241,30 @@ onMounted(async () => {
     if (result) {
       // Sort by publishedAt in descending order
       portfolio.value = result.sort((a, b) => {
-        return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+        return (
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+        );
       });
-            // Extract unique platform titles for the dropdown
-            const platforms = new Set(result.flatMap(item => item.platform.map(p => p.title)));
+      // Extract unique platform titles for the dropdown
+      const platforms = new Set(
+        result.flatMap((item) =>
+          item.platform ? item.platform.map((p) => p.title) : []
+        )
+      );
       platformOptions.value = Array.from(platforms);
 
       // Debugging: Log the result and platforms
-      console.log('Portfolio:', result);
-      console.log('Platforms:', platformOptions.value);
+      // console.log("Portfolio:", result);
+      // console.log("Platforms:", platformOptions.value);
     }
   } catch (e) {
-    error.value =
-      e instanceof Error ? e.message : 'An unknown error occurred';
+    error.value = e instanceof Error ? e.message : "An unknown error occurred";
   } finally {
     loading.value = false;
   }
-});
 
+  // console.log("Portfolio:", portfolio.value);
+});
 
 const openModal = (item: PortfolioItem) => {
   modalImage.value = item.mainImage;
@@ -236,27 +276,34 @@ const closeModal = () => {
 };
 
 const getBodyText = (body: Array<any>) => {
-  if (!body || body.length === 0) return 'No content available';
+  if (!body || body.length === 0) return "No content available";
   return body
     .map((block) => {
       if (block.children && Array.isArray(block.children)) {
         return block.children
           .map((child: { text: string }) => child.text)
-          .join(' ');
+          .join(" ");
       }
-      return '';
+      return "";
     })
-    .join(' ');
+    .join(" ");
 };
 
 // Computed property to filter portfolio items based on the selected platform
 const filteredPortfolio = computed(() => {
   if (!selectedPlatform.value) {
-    return portfolio.value; // Show all items if no platform is selected
+    return portfolio.value; // Return all items if no platform is selected
   }
-  return portfolio.value.filter(item =>
-    item.platform.some(platform => platform.title === selectedPlatform.value)
+
+  // Return filtered items based on the selected platform
+  return portfolio.value.filter((item) =>
+    item.platform.some((platform) => platform.title === selectedPlatform.value)
   );
+});
+
+
+watch(selectedPlatform, (newValue) => {
+  console.log('Selected platform:', newValue);
 });
 </script>
 
@@ -298,4 +345,3 @@ a:focus {
   outline-offset: 2px;
 }
 </style>
-
